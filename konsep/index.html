@@ -1,0 +1,154 @@
+<title>Montaj Jelajah Cilik</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: papan cerita menegak; satu lajur garis masa dengan bingkai 9:16 per babak. Satu rupa sinematik gelap (pilihan sengaja). */
+:root{
+  --bg:#0f1419; --panel:#171e26; --fg:#efe9df; --muted:#9aa6b2;
+  --gold:#e8b45a; --green:#4fae5c; --line:#2a3440;
+  --display:"Fraunces",Georgia,serif; --body:"Plus Jakarta Sans",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  color-scheme:dark;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.55}
+.wrap{max-width:980px;margin:0 auto;padding-block:40px 72px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-bottom:28px}
+header img{width:72px;height:72px;background:#fff;border-radius:50%;padding:4px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:var(--display);font-size:clamp(28px,5vw,44px);line-height:1.1;margin:4px 0;text-wrap:balance}
+.lede{color:var(--muted);max-width:62ch}
+.specs{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 36px}
+.specs span{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--muted)}
+.bar{display:flex;height:10px;border-radius:5px;overflow:hidden;margin:0 0 6px}
+.bar i{display:block}
+.barlbl{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:40px}
+.scene{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:26px 0;border-top:1px solid var(--line)}
+.frame{aspect-ratio:9/16;max-width:100%;border-radius:10px;position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;padding:12px;text-align:center;box-shadow:0 10px 30px #0008}
+.frame::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 50%,#0009 100%);pointer-events:none}
+.frame p{position:relative;z-index:1;font-family:var(--display);font-style:italic;font-size:12px;line-height:1.3;color:#fff;text-shadow:0 1px 6px #000;margin:0}
+.frame .ic{position:absolute;top:38%;left:0;right:0;font-size:30px;z-index:1}
+.time{font-family:var(--mono);font-size:12px;color:var(--gold)}
+.scene h2{font-family:var(--display);font-size:22px;margin:2px 0 8px;font-weight:600}
+.scene .body{min-width:0}
+.scene ul{margin:8px 0 0;padding-left:18px;color:var(--fg)}
+.scene li{margin:3px 0}
+.tag{display:inline-block;font-family:var(--mono);font-size:11px;color:var(--bg);background:var(--gold);border-radius:4px;padding:2px 7px;margin-right:6px}
+.tag.g{background:var(--green)}
+.music{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:10px}
+.note{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-top:40px}
+.note h3{font-family:var(--display);margin:0 0 8px}
+.balloon{animation:rise 4s ease-in infinite}
+@keyframes rise{0%{transform:translateY(40px);opacity:0}20%{opacity:1}100%{transform:translateY(-90px);opacity:0}}
+@media (prefers-reduced-motion:reduce){.balloon{animation:none}}
+@media (max-width:560px){.scene{grid-template-columns:110px 1fr;gap:16px}.scene h2{font-size:19px}}
+</style>
+
+<div class="wrap">
+<header>
+  <img src="logo.png" alt="Logo PASTI">
+  <div>
+    <div class="eyebrow">Konsep papan cerita · draf 1</div>
+    <h1>“Pulang Sebagai Penjelajah”</h1>
+    <div class="lede">Montaj penutup Program Jelajah Cilik: STEM, Alam dan Pembelajaran. PASTI Al-Huda, Changlun. 17 November 2026.</div>
+  </div>
+</header>
+
+<div class="specs">
+  <span>9:16 menegak · 1080×1920</span><span>± 88 saat</span><span>TikTok & WhatsApp</span><span>Piano + strings</span><span>Sentimental</span><span>Gred warna: emas petang</span>
+</div>
+
+<div class="bar" aria-hidden="true">
+  <i style="flex:5;background:#38424e"></i><i style="flex:6;background:#5b6f86"></i><i style="flex:6;background:#7f9bb5"></i><i style="flex:10;background:#4fae5c"></i><i style="flex:11;background:#8bc06a"></i><i style="flex:11;background:#4a8fd4"></i><i style="flex:16;background:#e8b45a"></i><i style="flex:6;background:#2c3e66"></i><i style="flex:6;background:#1d2747"></i><i style="flex:11;background:#c88a3a"></i>
+</div>
+<div class="barlbl"><span>0:00 · tenang</span><span>bina emosi</span><span>puncak: belon</span><span>reda · 1:28</span></div>
+
+<section class="scene">
+  <div class="frame" style="background:#06080b"><img src="logo.png" alt="" style="position:absolute;top:34%;left:30%;width:40%;background:#fff;border-radius:50%;padding:3px;opacity:.85"><p>17.11.2026</p></div>
+  <div class="body"><div class="time">0:00 – 0:05</div><h2>Pembukaan dalam gelap</h2>
+  <p>Skrin hitam. Satu not piano. Logo PASTI muncul perlahan dengan cahaya lembut, kemudian tarikh ditaip satu-satu.</p>
+  <div class="music">♪ Piano solo, perlahan</div></div>
+</section>
+
+<section class="scene">
+  <div class="frame" style="background:linear-gradient(#1b2433,#3d4a63 70%,#c98b5a)"><p>“Subuh itu, mereka belum tahu betapa besarnya dunia.”</p></div>
+  <div class="body"><div class="time">0:05 – 0:11</div><h2>Subuh di PASTI Al-Huda</h2>
+  <p>Anak-anak sampai dengan beg, mata masih mengantuk, tangan dipimpin ibu bapa. Gerak perlahan, tona biru subuh.</p>
+  <ul><li>Fail: <code>1_PASTI</code></li></ul></div>
+</section>
+
+<section class="scene">
+  <div class="frame" style="background:linear-gradient(160deg,#2a4a6b,#7f9bb5)"><span class="ic">🚌</span><p>Changlun → Penaga</p></div>
+  <div class="body"><div class="time">0:11 – 0:17</div><h2>Bas bertolak</h2>
+  <p>Lambaian dari tingkap bas. Lepas tu <b>peta animasi</b>: garisan emas melukis laluan Changlun → Penaga, ikon bas kecil bergerak di atasnya.</p>
+  <span class="tag">Tak dijangka</span>Peta laluan hidup<ul><li>Fail: <code>2_Bas</code></li></ul>
+  <div class="music">♪ Strings masuk perlahan</div></div>
+</section>
+
+<section class="scene">
+  <div class="frame" style="background:linear-gradient(#9fd3a0,#3f7d45)"><p>Kg. Agong, Penaga</p></div>
+  <div class="body"><div class="time">0:17 – 0:27</div><h2>Belajar dari alam</h2>
+  <p>Klip aktiviti: tangan kecil menyentuh tanah dan daun, wajah ingin tahu. Potongan ikut rentak piano. Nama lokasi muncul di sudut bawah ala dokumentari.</p>
+  <ul><li>Fail: <code>3_KgAgong</code></li></ul></div>
+</section>
+
+<section class="scene">
+  <div class="frame" style="background:linear-gradient(#e7d6b2,#8a6a3e)"><p>“Ilmu dikongsi, ukhuwah disulam.”</p></div>
+  <div class="body"><div class="time">0:27 – 0:38</div><h2>Madrasah Tuan Guru Haji Abdul Majid</h2>
+  <p>Makan tengah hari bersama, saf solat anak-anak, kemudian <b>bersalaman dan bertukar hadiah</b> dalam gerak perlahan.</p>
+  <ul><li>Teks kecil: <i>Terima kasih atas jamuan tengah hari</i></li><li>Fail: <code>4_Madrasah</code></li></ul></div>
+</section>
+
+<section class="scene">
+  <div class="frame" style="background:radial-gradient(circle at 50% 30%,#7fc3ff,#1a3b7a)"><span class="ic">🔭</span><p>Tech Dome Penang</p></div>
+  <div class="body"><div class="time">0:38 – 0:49</div><h2>Dunia sains terbuka</h2>
+  <p>Tempo naik. Potongan lebih pantas: mata terbeliak, mulut ternganga, tangan menekan butang eksperimen. Kilauan cahaya biru pada peralihan.</p>
+  <ul><li>Fail: <code>5_TechDome</code></li></ul>
+  <div class="music">♪ Strings penuh, membina</div></div>
+</section>
+
+<section class="scene">
+  <div class="frame" style="background:linear-gradient(#f3c37a 0%,#e58d5a 45%,#2c3e66 80%,#0d1530)"><span class="ic balloon">🎈</span><p>“Ada yang terbang… seperti impian mereka.”</p></div>
+  <div class="body"><div class="time">0:49 – 1:05</div><h2>Pantai Bersih · puncak emosi</h2>
+  <p>Cahaya petang keemasan. Main pasir, berkelah atas rumput, berlari kejar belon. Semua dalam gerak perlahan.</p>
+  <p>Muzik senyap sekejap. Hanya <b>bunyi asal</b> jeritan teruja masa belon dilepaskan. Kamera ikut belon naik, langit petang bertukar perlahan jadi <b>langit malam berbintang</b>.</p>
+  <span class="tag">Tak dijangka</span>Peralihan langit petang → malam<ul><li>Fail: <code>6_PantaiBersih</code></li></ul>
+  <div class="music">♪ Senyap → piano kembali satu not</div></div>
+</section>
+
+<section class="scene">
+  <div class="frame" style="background:linear-gradient(#0d1530,#1d2747)"><span class="ic">🚌</span><p>R&R Gurun</p></div>
+  <div class="body"><div class="time">1:05 – 1:11</div><h2>Bas dalam malam</h2>
+  <p>Dari bintang, kamera turun ke lampu bas di lebuh raya. Solat dan makan malam di R&R Gurun dengan tona lampu jalan yang hangat.</p>
+  <ul><li>Fail: <code>7_RnR_Gurun</code></li></ul></div>
+</section>
+
+<section class="scene">
+  <div class="frame" style="background:linear-gradient(#141a2b,#2e2a3a)"><p>“Penat… tapi hati penuh.”</p></div>
+  <div class="body"><div class="time">1:11 – 1:17</div><h2>Tertidur dalam bas</h2>
+  <p>Wajah-wajah lena bersandar di bahu kawan dan ibu. Zum sangat perlahan. Tiba di Changlun jam 10:30 malam.</p>
+  <ul><li>Fail: <code>8_Pulang</code></li></ul></div>
+</section>
+
+<section class="scene">
+  <div class="frame" style="background:#0f1419"><p style="font-style:normal;font-family:var(--mono);font-size:11px;line-height:1.7">25 cilik<br>5 guru<br>14 ibu bapa<br>3 destinasi ilmu<br>1 hari yang takkan dilupa</p></div>
+  <div class="body"><div class="time">1:17 – 1:22</div><h2>Angka yang dikira naik</h2>
+  <p>Setiap angka berdetik naik satu-satu, selari dengan not piano.</p>
+  <span class="tag">Tak dijangka</span>Statistik animasi</div>
+</section>
+
+<section class="scene">
+  <div class="frame" style="background:linear-gradient(#bfe6ff,#7cc47f)"><p>“Pergi sebagai murid, pulang sebagai penjelajah.”</p></div>
+  <div class="body"><div class="time">1:22 – 1:28</div><h2>Gambar kumpulan jadi kartun</h2>
+  <p>Gambar berkumpulan 44 penjelajah dibekukan, lalu berubah perlahan jadi gaya kartun seperti poster program. Doa <i>“Rabbi zidni ilma”</i> muncul dalam khat.</p>
+  <p>Kredit ringkas: <b>Guru-guru PASTI Al-Huda · Ibu bapa · Madrasah Tuan Guru Haji Abdul Majid, Penaga (penaja makan tengah hari)</b>. Penutup dengan logo dan tagline <i>“Melahirkan generasi cilik yang berilmu, berakhlak dan berdaya saing.”</i></p>
+  <span class="tag">Tak dijangka</span>Transformasi foto → kartun<div class="music">♪ Not terakhir piano, pudar</div></div>
+</section>
+
+<div class="note">
+  <h3>Untuk disahkan</h3>
+  <ul>
+    <li>Susunan dan ayat-ayat di atas: setuju atau ada yang nak ubah?</li>
+    <li>Gambar dan klip di sini masih gambaran warna. Bila fail sebenar diupload, setiap babak akan diisi dan digred sinematik.</li>
+    <li>Upload ikut folder: <code>1_PASTI</code> hingga <code>8_Pulang</code>. Klip belon paling penting, hantar versi asal (bukan versi WhatsApp yang dimampatkan) kalau boleh.</li>
+  </ul>
+</div>
+</div>
