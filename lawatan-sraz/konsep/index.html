@@ -1,0 +1,178 @@
+<title>Misi Penjelajah Cilik</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&family=Space+Mono:wght@700&display=swap">
+<style>
+/* Layout: papan cerita gaya peta permainan; HUD di atas (logo, spesifikasi, bar XP = garis masa), kemudian satu lajur babak dengan jalur bingkai 9:16 gambar sebenar. Warna diambil dari baju SRAZ: teal, kuning, merah-oren, biru laut. */
+:root{
+  --bg:#eef6f5; --panel:#ffffff; --ink:#13304a; --muted:#5b7182; --line:#d3e3e1;
+  --teal:#0e9896; --sun:#f2b705; --coral:#e4553b; --navy:#1d3f8f; --chip:#e2f1ef;
+  --display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  --body:"Nunito",system-ui,-apple-system,sans-serif;
+  --mono:"Space Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c1a24; --panel:#132734; --ink:#e7f3f2; --muted:#9db3bf; --line:#22404f;
+  --teal:#2cc2bf; --sun:#ffc929; --coral:#ff7a5c; --navy:#7ea2ff; --chip:#173443; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1a24; --panel:#132734; --ink:#e7f3f2; --muted:#9db3bf; --line:#22404f;
+  --teal:#2cc2bf; --sun:#ffc929; --coral:#ff7a5c; --navy:#7ea2ff; --chip:#173443; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
+.wrap{max-width:1000px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+header img{width:76px;height:76px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px var(--sun)}
+header>div{min-width:0;flex:1}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,6vw,48px);line-height:1;margin:4px 0 6px;text-wrap:balance}
+h1 span{color:var(--coral)}
+.lede{color:var(--muted);margin:0;max-width:62ch}
+.specs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 26px}
+.specs span{font-size:12.5px;font-weight:700;background:var(--chip);border-radius:999px;padding:5px 12px}
+.hud{background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:14px 16px}
+.hud-top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:8px;gap:8px;flex-wrap:wrap}
+.xp{display:flex;height:16px;border-radius:8px;overflow:hidden;gap:2px;background:var(--line)}
+.xp i{display:block;min-width:4px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:12px;color:var(--muted)}
+.legend b{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.scene{display:grid;grid-template-columns:118px 1fr;gap:20px;padding:26px 0;border-bottom:2px dashed var(--line)}
+.meta{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.time{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.lv{font-family:var(--display);font-weight:800;font-size:13px;line-height:1.1;color:#fff;border-radius:8px;padding:5px 9px}
+.dur{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.body{min-width:0}
+.body h2{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.15;margin:0 0 6px;text-wrap:balance}
+.body p{margin:0 0 8px;max-width:66ch}
+.strip{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 10px;margin:6px 0 4px;scrollbar-width:thin}
+.fr{flex:0 0 auto;width:96px;aspect-ratio:9/16;max-width:100%;border-radius:10px;overflow:hidden;position:relative;background:var(--chip);box-shadow:0 4px 12px #0002}
+.fr img{width:100%;height:100%;object-fit:cover;display:block}
+.fr.zin img{animation:zin 6s ease-in-out infinite alternate}
+.fr.zout img{animation:zout 6s ease-in-out infinite alternate}
+@keyframes zin{from{transform:scale(1)}to{transform:scale(1.14)}}
+@keyframes zout{from{transform:scale(1.14)}to{transform:scale(1)}}
+.fr.gfx{display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;font-family:var(--display);font-weight:800;font-size:13px;line-height:1.1;color:#fff}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;align-items:center}
+.ost{font-size:13px;background:var(--chip);border-radius:8px;padding:4px 10px}
+.ost::before{content:"Teks: ";font-weight:700;color:var(--teal)}
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--display);font-weight:800;font-size:13.5px;color:var(--ink);background:var(--sun);border-radius:999px;padding:3px 12px 3px 4px;box-shadow:0 2px 0 #0003}
+.badge em{font-style:normal;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#fff}
+.sfx{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.note{background:var(--panel);border:2px solid var(--coral);border-radius:14px;padding:18px 20px;margin-top:34px}
+.note h3{font-family:var(--display);font-weight:800;font-size:22px;margin:0 0 6px}
+.note ol{margin:0;padding-left:20px}
+.note li{margin:6px 0}
+@media (max-width:560px){.scene{grid-template-columns:1fr;gap:10px}.meta{flex-direction:row;flex-wrap:wrap;align-items:center}.fr{width:84px}}
+@media (prefers-reduced-motion:reduce){.fr img{animation:none!important}}
+</style>
+
+<div class="wrap">
+<header>
+  <img src="../aset/logo-sraz.jpg" alt="Logo Sekolah Rendah Al-Azhar">
+  <div>
+    <div class="eyebrow">Papan cerita · Konsep 1 · draf 1</div>
+    <h1>Misi Penjelajah <span>Cilik</span></h1>
+    <p class="lede">Video montaj Lawatan Sambil Belajar SRAZ dari Jitra ke The TOP Penang, Rabu 18 November 2026. Setiap lokasi ialah satu level permainan. Murid kumpul lencana, bar XP naik, dan misi selesai bila bas sampai semula ke sekolah.</p>
+  </div>
+</header>
+
+<div class="specs">
+  <span>TikTok 9:16 · 1080×1920</span><span>± 1 min 30 s</span><span>37 gambar, semua dipakai</span><span>Zum masuk/keluar perlahan</span><span>Muzik ceria & comel</span><span>9 lencana</span>
+</div>
+
+<div class="hud" aria-label="Garis masa video">
+  <div class="hud-top"><span>0:00 MULA</span><span>BAR XP = GARIS MASA</span><span>1:30 MISI SELESAI</span></div>
+  <div class="xp" id="xp"></div>
+  <div class="legend" id="legend"></div>
+</div>
+
+<main id="scenes"></main>
+
+<section class="note">
+  <h3>Perlu kau sahkan</h3>
+  <ol>
+    <li><b>Angka untuk kad "Misi Selesai":</b> berapa murid, guru dan ibu bapa yang ikut? Buat masa ni aku letak tanda [?].</li>
+    <li><b>Makan atas lantai</b> (3 gambar murid perempuan bersila): aku letak di <b>masjid, makan petang</b>. Betul?</li>
+    <li><b>Gambar budak berkaca mata yang kabur</b> aku buang. Setuju?</li>
+    <li><b>Kredit penutup:</b> guru-guru SRAZ, ibu bapa, The TOP Penang dan Masjid Abdullah Fahim. Ada nama lain nak ditambah?</li>
+    <li><b>Muzik:</b> aku guna muzik bebas hak cipta yang ceria dan comel, seperti ukulele, glockenspiel dan tepukan tangan, supaya video tak disekat di TikTok. Kalau ada lagu pilihan sendiri, beritahu aku.</li>
+  </ol>
+</section>
+</div>
+
+<script>
+const C={open:"var(--navy)",map:"var(--teal)",l1:"var(--sun)",l2:"var(--sun)",l3:"var(--coral)",boss:"var(--coral)",l4:"var(--teal)",end:"var(--navy)"};
+const G=(t,bg)=>({gfx:t,bg});
+const S=[
+ {t:"0:00–0:05",d:5,k:"open",lv:"PEMBUKAAN",h:"Logo SRAZ yang premium",
+  ph:[G('<img src="../aset/logo-sraz.jpg" alt="" style="width:70%;border-radius:50%;background:#fff">',"radial-gradient(circle,#24508f,#0b1630)")],
+  p:"Skrin biru gelap dengan bintang halus. Satu titik cahaya mengembang dan logo SRAZ timbul. Kilauan emas menyapu khat dari kiri ke kanan, dan cincin cahaya berdenyut sekali di belakang logo. Kemudian tajuk <b>MISI PENJELAJAH CILIK</b> melantun masuk gaya permainan, dengan butang <b>MULA ▶</b> berkelip dan \"ditekan\".",
+  o:"Sekolah Rendah Al-Azhar mempersembahkan", s:"♪ ding syiling · whoosh · klik butang"},
+ {t:"0:05–0:12",d:7,k:"map",lv:"PETA MISI",h:"Peta 3D: Jitra ke George Town",
+  ph:[G("Jitra<br>⬇<br>🚌<br>⬇<br>George Town","linear-gradient(160deg,#0e9896,#1d3f8f)")],
+  p:"Kamera condong 3D di atas peta Kedah dan Pulau Pinang. Bas kuning comel bergerak dari SRAZ Jitra, ikut jalan bertitik ke selatan dan merentas jambatan ke George Town. Tiga bendera destinasi berdiri di peta: <b>The TOP</b>, <b>Masjid Abdullah Fahim</b> dan <b>Rumah (SRAZ)</b>.",
+  o:"Misi hari ini: 3 destinasi · 18.11.2026", s:"♪ muzik ceria bermula"},
+ {t:"0:12–0:20",d:8,k:"l1",lv:"LEVEL 1",h:"Naik Bas!",
+  ph:["01_bas_lelaki_gaya","02_bas_perempuan_penuh","03_bas_lelaki_bantal"],z:["zin","zout","zin"],
+  p:"Tiga gambar dalam bas, kira-kira 2.5 saat setiap satu. Zum masuk dan keluar perlahan supaya setiap wajah sempat dilihat. Corak kerusi bas yang berwarna-warni bergerak sedikit sebagai kesan paralaks.",
+  o:"LEVEL 1: Naik Bas!", b:["🚌","Penumpang Ceria"], s:"♪ hon bas comel"},
+ {t:"0:20–0:25",d:5,k:"l2",lv:"LEVEL 2",h:"Tiba di George Town",
+  ph:["04_tiba_komtar","04b_komtar_selfie_guru_lelaki"],z:["zout","zin"],
+  p:"Peta mini muncul sekejap di sudut skrin: bas sampai di bendera KOMTAR. Kemudian gambar murid di pagar kuning tepi jalan dan selfie cikgu bersama murid lelaki.",
+  o:"LEVEL 2: Tiba di George Town", b:["📍","Sampai Penang"]},
+ {t:"0:25–0:33",d:8,k:"l3",lv:"LEVEL 3 · 1",h:"The TOP: Daftar Masuk",
+  ph:["05_thetop_skrin_lobi","05c_thetop_lobi_gaya_ceria","06_thetop_gelang_kumpulan","07_thetop_selfie_guru"],z:["zin","zout","zin","zout"],
+  p:"Skrin gergasi yang memaparkan nama \"Sekolah Rendah Al Azhar\" membuka level ini. Gambar buku lima bergelang tangan bersatu dijadikan momen \"pas masuk diaktifkan\", dengan gelang bercahaya sekali.",
+  o:"LEVEL 3: The TOP Penang", b:["🎟️","Pas Masuk Diterima"], s:"♪ bunyi imbasan bip"},
+ {t:"0:33–0:41",d:8,k:"l3",lv:"LEVEL 3 · 2",h:"Dunia Jurassic",
+  ph:["06c_jurassic_pintu_masuk","06b_thetop_teater_gelap","06d_dinosaur_kumpulan","06e_dinosaur_sangkar_lelaki"],z:["zin","zin","zout","zin"],
+  p:"Pintu Jurassic Research Center, kemudian murid menonton dalam teater gelap, gambar kumpulan dengan dinosaur gergasi, dan murid lelaki di sangkar. Tapak kaki dinosaur kartun berjalan melintas sebagai peralihan.",
+  o:"Sub-misi: Dunia Jurassic", b:["🦖","Penjelajah Dinosaur"], s:"♪ ngauman dinosaur comel"},
+ {t:"0:41–0:48",d:7,k:"l3",lv:"LEVEL 3 · 3",h:"Bawah Laut",
+  ph:["06f_akuarium_kubah_dua_lelaki","06g_akuarium_kubah_kopiah","06h_akuarium_kubah_perempuan","06i_akuarium_rumah_kampung_perempuan"],z:["zout","zin","zout","zin"],
+  p:"Tiga gambar murid dalam kubah kaca akuarium dijadikan \"kapal selam\". Gelembung animasi naik di sekeliling bingkai. Gambar murid perempuan di depan rumah kampung menutup babak ini.",
+  o:"Sub-misi: Bawah Laut", b:["🐠","Peneroka Laut"], s:"♪ blup-blup gelembung"},
+ {t:"0:48–1:00",d:12,k:"boss",lv:"LEVEL BOS",h:"Puncak 249 meter",
+  ph:["08_pemandangan_georgetown","09_thetop_tingkap_pandang","09e_skywalk_perempuan_cikgu","09f_skywalk_perempuan_menegak","09g_skywalk_lelaki","09b_lantai_kaca_lelaki","09c_lantai_kaca_atas","09d_lantai_kaca_perempuan"],z:["zout","zin","zout","zin","zout","zin","zout","zin"],
+  p:"Babak paling panjang. Meter ketinggian di tepi skrin berdetik naik daripada 0 m ke <b>249 m</b>, lalu panorama George Town terbuka. Kemudian Rainbow Skywalk dan lantai kaca. Gambar lantai kaca dari atas bergegar sedikit dengan teks <b>\"Berani tak?\"</b>, dan jawapan murid ialah tanda peace.",
+  o:"LEVEL BOS: 249 m dari tanah!", b:["🏆","Hero Langit"], s:"♪ muzik naik, dram kecil"},
+ {t:"1:00–1:04",d:4,k:"l3",lv:"LEVEL 3 · 5",h:"Taman Bumbung",
+  ph:["10_thetop_bumbung_kerusi_menegak","10b_taman_bumbung_kerusi_tuah"],z:["zout","zin"],
+  p:"Murid perempuan santai di kerusi putih atas rumput hijau dengan latar laut. Kemudian murid lelaki berebut duduk di \"Kerusi Paling Bertuah di Dunia\".",
+  o:"Sub-misi: Taman Atas Awan", b:["🍀","Kerusi Tuah"]},
+ {t:"1:04–1:09",d:5,k:"l3",lv:"LEVEL 3 · 6",h:"Isi Tenaga",
+  ph:["11a_makan_tgh_meja_lelaki1","11b_makan_tgh_meja_lelaki2","11c_makan_tgh_meja_lelaki3","11d_makan_tgh_meja_perempuan1","11e_makan_tgh_meja_perempuan2_menegak"],z:["zin","zin","zin","zin","zin"],
+  p:"Lima meja makan tengah hari muncul sebagai <b>kolaj grid</b> dalam satu skrin. Setiap gambar \"pop\" masuk ikut rentak muzik, jadi semua kumpulan dapat tempat tanpa babak jadi laju. Meter tenaga di sudut mengisi penuh.",
+  o:"+100 Tenaga!", b:["🍗","Perut Kenyang"], s:"♪ bunyi nyam-nyam"},
+ {t:"1:09–1:12",d:3,k:"map",lv:"PETA",h:"Ke Masjid Abdullah Fahim",
+  ph:[G("George Town<br>⬇<br>🌉<br>⬇<br>Kepala Batas","linear-gradient(160deg,#e4553b,#f2b705)")],
+  p:"Kembali ke peta 3D. Bas melintas jambatan ke Kepala Batas sambil langit di peta bertukar jingga petang.",
+  o:"Seterusnya: Masjid Abdullah Fahim"},
+ {t:"1:12–1:19",d:7,k:"l4",lv:"LEVEL 4",h:"Masjid Abdullah Fahim",
+  ph:["15_masjid_solat_perempuan","14_makan_lantai_kumpulan1","14_makan_lantai_kumpulan2","14_makan_lantai_kumpulan3"],z:["zout","zin","zout","zin"],
+  p:"Tempo jadi lebih perlahan dan muzik lebih lembut. Murid bersaf dalam dewan solat, kemudian makan petang bersila dalam kumpulan. Peralihan guna cahaya lembut, tanpa kesan permainan yang bising.",
+  o:"LEVEL 4: Solat jamak & makan petang", b:["🕌","Hati Tenang"], s:"♪ muzik lembut, tempo turun"},
+ {t:"1:19–1:22",d:3,k:"map",lv:"PETA",h:"Pulang ke SRAZ",
+  ph:[G("Kepala Batas<br>⬇<br>🚌✨<br>⬇<br>Jitra","linear-gradient(160deg,#1d3f8f,#0b1630)")],
+  p:"Peta jadi malam dengan bintang di langit. Bas pulang ke utara, dan bendera <b>Rumah</b> di Jitra bersinar apabila bas tiba.",
+  o:"Pulang ke sekolah · 7.00 malam"},
+ {t:"1:22–1:26",d:4,k:"end",lv:"MISI SELESAI",h:"Semua lencana terkumpul",
+  ph:["05b_thetop_gambar_kumpulan_maskot"],z:["zout"],
+  p:"Gambar kumpulan penuh bersama maskot The TOP. Bar XP penuh 100% dan konfeti jatuh. Sembilan lencana terbang berkumpul menjadi satu papan pencapaian. Angka muncul satu-satu: <b>[?] penjelajah cilik · [?] guru · 1 hari yang tak terlupa</b>.",
+  o:"MISI SELESAI!", s:"♪ fanfare kemenangan"},
+ {t:"1:26–1:30",d:4,k:"end",lv:"PENUTUP",h:"Terima kasih",
+  ph:[G('<img src="../aset/logo-sraz.jpg" alt="" style="width:62%;border-radius:50%;background:#fff;margin-bottom:6px"><br><span style="font-size:10px">Komited Melahirkan Insan Rabbani</span>',"linear-gradient(#0e9896,#13304a)")],
+  p:"Teks terima kasih kekal di skrin sekurang-kurangnya 4 saat supaya sempat dibaca: <b>guru-guru SRAZ, ibu bapa, The TOP Penang dan Masjid Abdullah Fahim</b>. Video ditutup dengan logo SRAZ dan slogan <i>\"Komited Melahirkan Insan Rabbani\"</i>.",
+  o:"Terima kasih semua!", s:"♪ not terakhir, pudar"}
+];
+const xp=document.getElementById("xp"), lg=document.getElementById("legend"), m=document.getElementById("scenes");
+const LG={open:"Pembukaan",map:"Peta 3D",l1:"Level 1–2",l3:"The TOP",boss:"Level bos",l4:"Masjid",end:"Penutup"};
+S.forEach(s=>{const i=document.createElement("i");i.style.flex=s.d;i.style.background=C[s.k];i.title=s.lv+" "+s.t;xp.appendChild(i)});
+Object.entries(LG).forEach(([k,v])=>{lg.insertAdjacentHTML("beforeend",`<span><b style="background:${C[k]}"></b>${v}</span>`)});
+S.forEach(s=>{
+  const fr=s.ph.map((p,i)=>typeof p==="string"
+    ?`<div class="fr ${(s.z||[])[i]||"zin"}"><img src="../gambar/${p}.jpg" alt="" loading="lazy"></div>`
+    :`<div class="fr gfx" style="background:${p.bg}">${p.gfx}</div>`).join("");
+  m.insertAdjacentHTML("beforeend",`<section class="scene">
+   <div class="meta"><span class="lv" style="background:${C[s.k]}">${s.lv}</span><span class="time">${s.t}</span><span class="dur">${s.d} saat · ${s.ph.filter(p=>typeof p==="string").length||"grafik"}${s.ph.some(p=>typeof p==="string")?" gambar":""}</span></div>
+   <div class="body"><h2>${s.h}</h2><div class="strip">${fr}</div><p>${s.p}</p>
+   <div class="tags">${s.o?`<span class="ost">${s.o}</span>`:""}${s.b?`<span class="badge"><em>${s.b[0]}</em>${s.b[1]}</span>`:""}${s.s?`<span class="sfx">${s.s}</span>`:""}</div></div></section>`);
+});
+</script>
