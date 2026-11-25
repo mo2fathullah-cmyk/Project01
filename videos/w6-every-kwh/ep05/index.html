@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Every kWh Counts EP5</title>
+<script src="../shared/gsap.min.js"></script>
+<script src="timing.js"></script>
+<style>
+:root{--cream:#F3E9D2;--paper:#FFF7E6;--ink:#0B1F35;--hl:#F7A04B;--muted:#9DB0C8;
+  --eff:#2E9D84;--con:#3FA9E0;--man:#F2C14E;--rec:#E07B39;--ren:#5DBB63;}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#061631}
+body{font-family:"Inter",sans-serif;color:var(--cream)}
+#frame{position:absolute;inset:0;overflow:hidden;background:radial-gradient(ellipse 120% 80% at 50% 38%,#17457A 0%,#0C2B55 42%,#061631 100%)}
+#grain{position:absolute;inset:0;opacity:.09;mix-blend-mode:overlay;z-index:50}
+.abs{position:absolute}
+#logo{left:44px;top:48px;height:90px;padding:12px 14px;background:#fff;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.35);z-index:40}
+#logo img{height:66px;display:block}
+#pill{left:0;width:1080px;top:66px;text-align:center;z-index:40}
+#pill span{display:inline-block;background:var(--con);color:#fff;font-weight:800;font-size:34px;padding:12px 34px;border-radius:999px}
+#tag{left:0;width:1080px;top:146px;text-align:center;z-index:40}
+#tag span{display:inline-block;background:#F6EBD3;color:#5A3B1C;border:3px solid #C9A06B;font-weight:700;font-size:25px;padding:6px 22px;border-radius:999px}
+#wm{right:52px;top:1748px;font-family:"Inter Display","Inter";font-weight:800;font-style:italic;font-size:36px;color:rgba(243,233,210,.55);z-index:45;text-shadow:0 2px 6px rgba(0,0,0,.35)}
+.hd{left:40px;width:1000px;top:236px;text-align:center;font-family:"Inter Display","Inter";font-weight:800;font-size:74px;letter-spacing:-.02em;line-height:1.05;opacity:0}
+.df{left:60px;width:960px;top:336px;text-align:center;font-weight:700;font-size:40px;color:var(--cream);opacity:0}
+.pn{left:0;top:420px;width:1080px;height:720px;opacity:0}
+.pn svg{position:absolute;inset:0}
+.tx{font-family:Inter;font-weight:800}
+/* word chips */
+.w{position:absolute;width:300px;height:72px;border-radius:999px;color:#fff;font-weight:800;font-size:32px;letter-spacing:.04em;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(0,0,0,.35);opacity:0;z-index:20}
+#wman{color:var(--ink)}
+.card{position:absolute;border-radius:28px;background:rgba(9,27,52,.85);border:4px solid var(--con)}
+.chip{position:absolute;font-weight:800;font-size:36px;padding:14px 28px;border-radius:18px;color:#fff;white-space:nowrap;opacity:0;box-shadow:0 6px 16px rgba(0,0,0,.3)}
+#key{left:70px;width:940px;top:830px;border-radius:30px;background:var(--paper);border:5px solid var(--con);padding:44px 48px;font-weight:800;font-size:52px;line-height:1.25;color:var(--ink);text-align:center;opacity:0}
+#key em{font-style:normal;color:#D2692A}
+#eq{left:40px;width:1000px;top:600px;display:flex;justify-content:center;align-items:center;gap:26px;opacity:0}
+#eq span{font-weight:800;font-size:44px;padding:18px 30px;border-radius:999px;color:#fff}
+#eq b{font-family:"Inter Display";font-size:90px;color:var(--hl)}
+#quiz{left:50px;width:980px;top:420px;height:700px;opacity:0;padding:40px 40px}
+#quiz .q1{font-weight:800;font-size:34px;color:var(--hl);letter-spacing:.06em;text-align:center}
+.qr{position:relative;height:112px;margin-top:8px;display:flex;align-items:center;font-weight:700;font-size:37px;line-height:1.15;padding-right:290px}
+.qr b{color:var(--hl);margin-right:16px;font-size:42px}
+.qa{position:absolute;right:0;top:22px;width:270px;height:66px;border-radius:999px;color:#fff;font-weight:800;font-size:28px;letter-spacing:.03em;display:flex;align-items:center;justify-content:center;opacity:0}
+#ring{left:900px;top:216px;width:140px;height:140px;opacity:0}
+#ring .n{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"Inter Display";font-weight:800;font-size:64px}
+#ebar{left:0;width:1080px;top:1210px;height:160px;opacity:0}
+#ebar .lb{position:absolute;left:60px;top:0;font-weight:800;font-size:34px}
+#ebar .tr{position:absolute;left:60px;top:60px;width:960px;height:50px;border-radius:25px;border:4px solid var(--cream);background:rgba(243,233,210,.12);overflow:hidden}
+#ebar .fl{position:absolute;left:0;top:0;bottom:0;width:100%;background:var(--rec);border-radius:20px}
+#ebar .nt{position:absolute;left:60px;top:122px;font-size:24px;font-weight:600;color:var(--muted)}
+#cap{left:60px;width:960px;top:1488px;height:180px;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;font-size:50px;line-height:1.22;color:#EEF3F8;text-shadow:0 3px 10px rgba(0,0,0,.45)}
+#cap .hl{color:var(--hl)}
+#outro{left:0;width:1080px;top:640px;text-align:center;opacity:0}
+#outro .o1{font-family:"Inter Display";font-weight:800;font-size:110px;line-height:1.02;letter-spacing:-.02em}
+#outro .o1 span{color:var(--hl)}
+#outro .o2{margin-top:36px;font-weight:700;font-size:38px;color:var(--muted)}
+#outro .o3{margin-top:90px;display:inline-block;background:var(--paper);color:var(--ink);font-weight:800;font-size:36px;padding:18px 34px;border-radius:999px}
+#outro .o3 b{color:#D2692A}
+</style>
+<style>
+.uc{position:absolute;width:480px;height:180px;border-radius:24px;background:rgba(9,27,52,.85);border:4px solid #3FA9E0;opacity:0;display:flex;align-items:center;gap:20px;padding:0 22px}
+.uc svg{flex:none}.uc b{display:block;font-size:31px;font-weight:800;line-height:1.15}.uc small{display:block;font-size:24px;font-weight:600;color:#9DB0C8;margin-top:4px}
+.fx{position:absolute;left:60px;width:960px;height:132px;border-radius:22px;background:rgba(9,27,52,.85);border:3px solid #2E9D84;opacity:0;display:flex;align-items:center;padding:0 26px;gap:22px}
+.fx i{flex:none;width:66px;height:66px;border-radius:50%;background:#2E9D84;color:#fff;font-style:normal;font-weight:800;font-size:36px;display:flex;align-items:center;justify-content:center}
+.fx span{font-size:34px;font-weight:800;line-height:1.2}.fx em{font-style:normal;color:#F7A04B}
+#qz{left:60px;width:960px;top:430px;height:430px;border-radius:30px;background:rgba(9,27,52,.85);border:4px solid #3FA9E0;padding:46px 50px;text-align:center;opacity:0}
+#qz .q1{font-weight:800;font-size:34px;color:#F7A04B;letter-spacing:.06em}#qz .q2{margin-top:30px;font-weight:800;font-size:50px;line-height:1.28}
+#ring2{left:430px;top:900px;width:220px;height:220px;opacity:0}#ring2 .n{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"Inter Display";font-weight:800;font-size:96px}
+#an{left:90px;width:900px;top:910px;border-radius:30px;background:#FFF7E6;color:#0B1F35;text-align:center;padding:36px 30px;opacity:0;font-weight:800;font-size:50px;line-height:1.2}#an em{font-style:normal;color:#D2692A}
+#bp{left:140px;width:800px;top:470px;height:560px;opacity:0}
+</style>
+<style>
+.tile{position:absolute;top:410px;width:230px;height:150px;border-radius:22px;background:rgba(9,27,52,.85);border:4px solid #3FA9E0;text-align:center;padding-top:18px;opacity:0}
+.tile b{display:block;font-family:"Inter Display";font-size:54px;color:#F7A04B;line-height:1}.tile span{display:block;margin-top:10px;font-weight:800;font-size:28px}
+.bc{position:absolute;left:60px;top:610px;width:960px;height:540px;border-radius:30px;background:rgba(9,27,52,.85);border:4px solid #F7A04B;text-align:center;padding-top:40px;opacity:0}
+.bc .f{font-weight:800;font-size:50px;color:#7FD3F5;line-height:1.2}.bc .n{margin-top:8px;font-weight:600;font-size:28px;color:#9DB0C8}
+.bc .x{margin-top:40px;font-weight:800;font-size:60px;opacity:0}.bc .r{margin-top:12px;font-family:"Inter Display";font-weight:800;font-size:92px;color:#F7A04B;opacity:0}
+.bc .e{display:inline-block;margin-top:22px;background:#E07B39;color:#fff;font-weight:800;font-size:34px;padding:12px 26px;border-radius:999px;opacity:0}
+</style>
+</head>
+<body>
+<div id="frame">
+  <div id="logo" class="abs"><img src="../shared/logo-unimap.png" alt="UniMAP"></div>
+  <div id="pill" class="abs"><span>Every kWh Counts</span></div>
+  <div id="tag" class="abs"><span>MMJ46102 · Week 6 · Chapter 4 · EP 5</span></div>
+  <div id="wm" class="abs">DrFath</div>
+
+  
+
+
+  <div class="hd abs" id="h0">Four formulas.</div>
+  <div class="hd abs" id="h1">1 · Energy</div><div class="hd abs" id="h2">2 · Efficiency</div>
+  <div class="hd abs" id="h3">3 · Energy intensity</div><div class="hd abs" id="h4">4 · % Saving</div>
+  <div class="hd abs" id="h5">Common mistake</div><div class="hd abs" id="h6">Your turn.</div>
+  <div class="tile" id="t1" style="left:40px"><b>E</b><span>1 · Energy</span></div><div class="tile" id="t2" style="left:295px"><b>η</b><span>2 · Efficiency</span></div><div class="tile" id="t3" style="left:550px"><b>/part</b><span>3 · Intensity</span></div><div class="tile" id="t4" style="left:805px"><b>%</b><span>4 · Saving</span></div><div class="bc" id="c1"><div class="f">E (kWh) = P (kW) × t (h)</div><div class="n">kW is power, kWh is energy</div><div class="x">8 kW × 5 h</div><div class="r">= 40 kWh</div></div><div class="bc" id="c2"><div class="f">η (%) = Output ÷ Input × 100</div><div class="n">η is said "eta"</div><div class="x">600 ÷ 800 × 100</div><div class="r">= 75%</div><br><div class="e">Energy lost = 100 − 75 = 25%</div></div><div class="bc" id="c3"><div class="f">Intensity = kWh ÷ GOOD parts</div><div class="n">energy for each good part</div><div class="x">600 kWh ÷ 300 parts</div><div class="r">= 2 kWh / part</div></div><div class="bc" id="c4"><div class="f">% saving = (Old − New) ÷ Old × 100</div><div class="n">compare before and after</div><div class="x">(600 − 510) ÷ 600 × 100</div><div class="r">= 15%</div></div>
+  <div id="eq" class="abs" style="top:640px"><span style="background:#5DBB63">✓ GOOD parts</span><b>not</b><span style="background:#C0392B">✗ ALL parts</span></div>
+  <div id="key" class="abs" style="top:860px"><em>KEY POINT</em> · Energy intensity: divide by <em>good parts</em> only. Scrap doesn't count.</div>
+  <div id="qz" class="abs"><div class="q1">PAUSE &amp; TRY</div><div class="q2">A motor takes in <span style="color:var(--hl)">900 kJ</span> and gives out <span style="color:var(--hl)">720 kJ</span>.<br>Efficiency?</div></div>
+  <div id="ring2" class="abs"><svg width="220" height="220" viewBox="0 0 220 220"><circle cx="110" cy="110" r="94" fill="none" stroke="rgba(243,233,210,.18)" stroke-width="16"/>
+    <circle id="arc" cx="110" cy="110" r="94" fill="none" stroke="#F7A04B" stroke-width="16" stroke-linecap="round" transform="rotate(-90 110 110)" stroke-dasharray="590.6"/></svg><div class="n" id="cd">5</div></div>
+  <div id="an" class="abs">720 ÷ 900 × 100<br>= <em>80%</em></div>
+  <div id="outro" class="abs"><div class="o1">Every kWh<br><span>Counts.</span></div><div class="o2">MMJ46102 · Design for Sustainability · UniMAP</div>
+    <div class="o3"><b>NEXT · EP 6</b> · Swap the Motor, Save the Money</div></div>
+  <div id="cap" class="abs"></div>
+  <svg id="grain" width="1080" height="1920"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+</div>
+<script>
+const $=s=>document.querySelector(s);
+const DUR=83;const H=t=>'<span class=hl>'+t+'</span>';
+const CAPS=[[0.3,3.0,"Four formulas."],[3.0,6.0,"You will use them "+H("again, and again")+"."],
+ [6.2,9.4,"Number one: "+H("energy")+"."],[9.4,12.6,"Energy equals power times time."],[12.6,16.8,"8 kW for 5 hours: "+H("40 kWh")+"."],
+ [17.0,20.4,"Number two: "+H("efficiency")+". The symbol is eta."],[20.4,24.4,"Efficiency equals output, divided by input, times 100."],
+ [24.4,28.6,"600 out of 800: "+H("75 percent")+"."],[28.6,32.8,"So "+H("25 percent")+" of the energy is lost."],
+ [33.0,36.6,"Number three: "+H("energy intensity")+"."],[36.6,40.6,"Total kWh, divided by the number of good parts."],[40.6,44.6,"600 kWh for 300 good parts: "+H("2 kWh per part")+"."],
+ [44.8,48.2,"Number four: "+H("percentage saving")+"."],[48.2,52.6,"Old minus new, divided by old, times 100."],[52.6,57.0,"From 600 down to 510: a "+H("15 percent")+" saving."],
+ [57.2,60.8,"One common mistake:"],[60.8,64.6,"for energy intensity, divide by "+H("good parts")+" only. Not all parts."],
+ [64.8,68.8,"Your turn. A motor takes in 900 kJ, and gives out 720 kJ."],[68.8,70.8,"What is its efficiency? Pause now."],
+ [76.0,79.2,"720 divided by 900, times 100: "+H("80 percent")+"."],[79.4,82.4,"Remember: "+H("every kWh counts.")]];
+const tl=gsap.timeline({paused:true,defaults:{ease:'power3.out',duration:.6}});
+function hd(id,a,b){tl.fromTo(id,{opacity:0,y:30},{opacity:1,y:0,immediateRender:false},a);if(b!==undefined)tl.to(id,{opacity:0,y:-24,duration:.4,ease:'power2.in'},b);}
+function pop(id,a){tl.fromTo(id,{opacity:0,y:40,scale:.9},{opacity:1,y:0,scale:1,ease:'back.out(1.8)',immediateRender:false},a);}
+function build(){
+  tl.fromTo('#logo,#pill,#tag',{opacity:0,y:-20},{opacity:1,y:0,stagger:.12,immediateRender:false},0);
+  hd('#h0',0.3,6.0);[1,2,3,4].forEach(i=>pop('#t'+i,0.6+i*.45));
+  const S=[[6.2,16.8,12.6],[17.0,32.8,24.4],[33.0,44.6,40.6],[44.8,57.0,52.6]];
+  S.forEach(([a,b,r],i)=>{const n=i+1;hd('#h'+n,a,b);pop('#c'+n,a+.1);
+    [1,2,3,4].forEach(j=>tl.to('#t'+j,{opacity:j===n?1:.35,borderColor:j===n?'#F7A04B':'#3FA9E0',scale:j===n?1.06:1,duration:.3},a));
+    tl.to(`#c${n} .x`,{opacity:1,duration:.4},r-3.2+ (n===1?.6:0));
+    tl.fromTo(`#c${n} .r`,{opacity:0,scale:.7},{opacity:1,scale:1,ease:'back.out(2)',immediateRender:false},r);
+    if(n===2)tl.to('#c2 .e',{opacity:1,duration:.4},28.6);
+    tl.to('#c'+n,{opacity:0,duration:.4},b);});
+  tl.to('.tile',{opacity:0,duration:.4},57.0);
+  hd('#h5',57.2,64.6);tl.fromTo('#eq',{opacity:0,y:30},{opacity:1,y:0,immediateRender:false},57.4);pop('#key',60.8);tl.to('#eq,#key',{opacity:0,duration:.4},64.6);
+  hd('#h6',64.8,79.2);pop('#qz',64.9);tl.fromTo('#ring2',{opacity:0,scale:.6},{opacity:1,scale:1,ease:'back.out(2)',immediateRender:false},70.4);
+  tl.to('#ring2',{opacity:0,duration:.3},75.7);pop('#an',76.0);tl.to('#qz,#an',{opacity:0,duration:.4},79.2);
+  tl.fromTo('#outro',{opacity:0,y:40},{opacity:1,y:0,duration:.8,immediateRender:false},79.4);tl.set({},{},DUR);
+}
+const clamp=v=>Math.max(0,Math.min(1,v));
+function drawCaps(t){const c=CAPS.find(c=>t>=c[0]&&t<c[1]);const el=$('#cap');if(!c){el.innerHTML='';return;}
+  if(el.dataset.k!==String(c[0])){el.innerHTML='<div>'+c[2]+'</div>';el.dataset.k=c[0];}
+  el.style.opacity=clamp((t-c[0])/.15)*clamp((c[1]-t)/.15);el.style.transform=`translateY(${(1-clamp((t-c[0])/.2))*14}px)`;}
+function drawLive(t){const k=clamp((t-70.8)/5);$('#arc').setAttribute('stroke-dashoffset',String(590.6*k));$('#cd').textContent=t<70.8?'5':String(Math.max(1,5-Math.floor(t-70.8)));}
+const Wp=window.WARP||[[0,0],[DUR,DUR]],OUT=window.NEW_DUR||DUR;
+function unwarp(tn){for(let i=1;i<Wp.length;i++){const[o0,n0]=Wp[i-1],[o1,n1]=Wp[i];if(tn<=n1)return n1===n0?o0:o0+(tn-n0)*(o1-o0)/(n1-n0);}return Wp[Wp.length-1][0];}
+window.seek=tn=>{const t=unwarp(tn);tl.seek(t,false);drawLive(t);drawCaps(t);};
+window.ready=document.fonts.ready.then(()=>{build();seek(0);return OUT;});
+</script>
+</body>
+</html>

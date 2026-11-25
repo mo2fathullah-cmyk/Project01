@@ -1,0 +1,122 @@
+[
+ {
+  "id": "01",
+  "t": 0.3,
+  "end": 2.8,
+  "text": "A factory uses a lot of energy."
+ },
+ {
+  "id": "02",
+  "t": 2.8,
+  "end": 5.2,
+  "text": "But where does it actually go?"
+ },
+ {
+  "id": "03",
+  "t": 5.4,
+  "end": 8.6,
+  "text": "Number one: motors. Pumps, fans, and conveyors."
+ },
+ {
+  "id": "04",
+  "t": 8.6,
+  "end": 12.0,
+  "text": "Two: compressed air, for tools, actuators, and cleaning."
+ },
+ {
+  "id": "05",
+  "t": 12.0,
+  "end": 15.6,
+  "text": "Three: heating and cooling. Ovens, furnaces, chillers."
+ },
+ {
+  "id": "06",
+  "t": 15.6,
+  "end": 19.2,
+  "text": "Four: machine tools. C N C machines, presses, moulding."
+ },
+ {
+  "id": "07",
+  "t": 19.2,
+  "end": 22.6,
+  "text": "Five: lighting and the building, like air conditioning."
+ },
+ {
+  "id": "08",
+  "t": 22.8,
+  "end": 26.0,
+  "text": "So how do engineers cut this energy?"
+ },
+ {
+  "id": "09",
+  "t": 26.0,
+  "end": 29.6,
+  "text": "They start early, at the design stage."
+ },
+ {
+  "id": "10",
+  "t": 29.8,
+  "end": 33.4,
+  "text": "Lighter parts: less material to process and transport."
+ },
+ {
+  "id": "11",
+  "t": 33.4,
+  "end": 37.0,
+  "text": "Fewer machining operations: less machine time."
+ },
+ {
+  "id": "12",
+  "t": 37.0,
+  "end": 40.6,
+  "text": "Less friction in moving parts: less energy in use."
+ },
+ {
+  "id": "13",
+  "t": 40.6,
+  "end": 44.2,
+  "text": "Better insulation: less heating and cooling."
+ },
+ {
+  "id": "14",
+  "t": 44.2,
+  "end": 47.8,
+  "text": "Easy maintenance: the machine stays efficient for longer."
+ },
+ {
+  "id": "15",
+  "t": 48.0,
+  "end": 51.6,
+  "text": "But be careful. The lowest energy process..."
+ },
+ {
+  "id": "16",
+  "t": 51.6,
+  "end": 55.6,
+  "text": "is not always the most sustainable product. Look at the whole life cycle."
+ },
+ {
+  "id": "17",
+  "t": 55.8,
+  "end": 59.0,
+  "text": "Your turn. A part needs five machining steps. You redesign it to need three."
+ },
+ {
+  "id": "18",
+  "t": 59.0,
+  "end": 61.0,
+  "text": "Which design fix is this? Pause now."
+ },
+ {
+  "id": "19",
+  "t": 66.2,
+  "end": 69.4,
+  "text": "Fewer machining operations: less machine time."
+ },
+ {
+  "id": "20",
+  "t": 69.6,
+  "end": 72.6,
+  "text": "Remember: every kilowatt hour counts."
+ }
+]

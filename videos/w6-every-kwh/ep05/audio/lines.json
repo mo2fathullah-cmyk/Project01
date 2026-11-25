@@ -1,0 +1,128 @@
+[
+ {
+  "id": "01",
+  "t": 0.3,
+  "end": 3.0,
+  "text": "Four formulas."
+ },
+ {
+  "id": "02",
+  "t": 3.0,
+  "end": 6.0,
+  "text": "You will use them again, and again."
+ },
+ {
+  "id": "03",
+  "t": 6.2,
+  "end": 9.4,
+  "text": "Number one: energy."
+ },
+ {
+  "id": "04",
+  "t": 9.4,
+  "end": 12.6,
+  "text": "Energy equals power, times time."
+ },
+ {
+  "id": "05",
+  "t": 12.6,
+  "end": 16.8,
+  "text": "Eight kilowatts for five hours: forty kilowatt hours."
+ },
+ {
+  "id": "06",
+  "t": 17.0,
+  "end": 20.4,
+  "text": "Number two: efficiency. The symbol is eta."
+ },
+ {
+  "id": "07",
+  "t": 20.4,
+  "end": 24.4,
+  "text": "Efficiency equals output, divided by input, times one hundred."
+ },
+ {
+  "id": "08",
+  "t": 24.4,
+  "end": 28.6,
+  "text": "Six hundred out of eight hundred: seventy five percent."
+ },
+ {
+  "id": "09",
+  "t": 28.6,
+  "end": 32.8,
+  "text": "So twenty five percent of the energy is lost."
+ },
+ {
+  "id": "10",
+  "t": 33.0,
+  "end": 36.6,
+  "text": "Number three: energy intensity."
+ },
+ {
+  "id": "11",
+  "t": 36.6,
+  "end": 40.6,
+  "text": "Total kilowatt hours, divided by the number of good parts."
+ },
+ {
+  "id": "12",
+  "t": 40.6,
+  "end": 44.6,
+  "text": "Six hundred kilowatt hours for three hundred good parts: two kilowatt hours per part."
+ },
+ {
+  "id": "13",
+  "t": 44.8,
+  "end": 48.2,
+  "text": "Number four: percentage saving."
+ },
+ {
+  "id": "14",
+  "t": 48.2,
+  "end": 52.6,
+  "text": "Old minus new, divided by old, times one hundred."
+ },
+ {
+  "id": "15",
+  "t": 52.6,
+  "end": 57.0,
+  "text": "From six hundred down to five hundred and ten: a fifteen percent saving."
+ },
+ {
+  "id": "16",
+  "t": 57.2,
+  "end": 60.8,
+  "text": "One common mistake:"
+ },
+ {
+  "id": "17",
+  "t": 60.8,
+  "end": 64.6,
+  "text": "for energy intensity, divide by good parts only. Not all parts."
+ },
+ {
+  "id": "18",
+  "t": 64.8,
+  "end": 68.8,
+  "text": "Your turn. A motor takes in nine hundred kilojoules, and gives out seven hundred and twenty."
+ },
+ {
+  "id": "19",
+  "t": 68.8,
+  "end": 70.8,
+  "text": "What is its efficiency? Pause now."
+ },
+ {
+  "id": "20",
+  "t": 76.0,
+  "end": 79.2,
+  "text": "Seven hundred and twenty, divided by nine hundred, times one hundred: eighty percent."
+ },
+ {
+  "id": "21",
+  "t": 79.4,
+  "end": 82.4,
+  "text": "Remember: every kilowatt hour counts."
+ }
+]

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Every kWh Counts EP3</title>
+<script src="../shared/gsap.min.js"></script>
+<script src="timing.js"></script>
+<style>
+:root{--cream:#F3E9D2;--paper:#FFF7E6;--ink:#0B1F35;--hl:#F7A04B;--muted:#9DB0C8;
+  --eff:#2E9D84;--con:#3FA9E0;--man:#F2C14E;--rec:#E07B39;--ren:#5DBB63;}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#061631}
+body{font-family:"Inter",sans-serif;color:var(--cream)}
+#frame{position:absolute;inset:0;overflow:hidden;background:radial-gradient(ellipse 120% 80% at 50% 38%,#17457A 0%,#0C2B55 42%,#061631 100%)}
+#grain{position:absolute;inset:0;opacity:.09;mix-blend-mode:overlay;z-index:50}
+.abs{position:absolute}
+#logo{left:44px;top:48px;height:90px;padding:12px 14px;background:#fff;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.35);z-index:40}
+#logo img{height:66px;display:block}
+#pill{left:0;width:1080px;top:66px;text-align:center;z-index:40}
+#pill span{display:inline-block;background:var(--con);color:#fff;font-weight:800;font-size:34px;padding:12px 34px;border-radius:999px}
+#tag{left:0;width:1080px;top:146px;text-align:center;z-index:40}
+#tag span{display:inline-block;background:#F6EBD3;color:#5A3B1C;border:3px solid #C9A06B;font-weight:700;font-size:25px;padding:6px 22px;border-radius:999px}
+#wm{right:52px;top:1748px;font-family:"Inter Display","Inter";font-weight:800;font-style:italic;font-size:36px;color:rgba(243,233,210,.55);z-index:45;text-shadow:0 2px 6px rgba(0,0,0,.35)}
+.hd{left:40px;width:1000px;top:236px;text-align:center;font-family:"Inter Display","Inter";font-weight:800;font-size:74px;letter-spacing:-.02em;line-height:1.05;opacity:0}
+.df{left:60px;width:960px;top:336px;text-align:center;font-weight:700;font-size:40px;color:var(--cream);opacity:0}
+.pn{left:0;top:420px;width:1080px;height:720px;opacity:0}
+.pn svg{position:absolute;inset:0}
+.tx{font-family:Inter;font-weight:800}
+/* word chips */
+.w{position:absolute;width:300px;height:72px;border-radius:999px;color:#fff;font-weight:800;font-size:32px;letter-spacing:.04em;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(0,0,0,.35);opacity:0;z-index:20}
+#wman{color:var(--ink)}
+.card{position:absolute;border-radius:28px;background:rgba(9,27,52,.85);border:4px solid var(--con)}
+.chip{position:absolute;font-weight:800;font-size:36px;padding:14px 28px;border-radius:18px;color:#fff;white-space:nowrap;opacity:0;box-shadow:0 6px 16px rgba(0,0,0,.3)}
+#key{left:70px;width:940px;top:830px;border-radius:30px;background:var(--paper);border:5px solid var(--con);padding:44px 48px;font-weight:800;font-size:52px;line-height:1.25;color:var(--ink);text-align:center;opacity:0}
+#key em{font-style:normal;color:#D2692A}
+#eq{left:40px;width:1000px;top:600px;display:flex;justify-content:center;align-items:center;gap:26px;opacity:0}
+#eq span{font-weight:800;font-size:44px;padding:18px 30px;border-radius:999px;color:#fff}
+#eq b{font-family:"Inter Display";font-size:90px;color:var(--hl)}
+#quiz{left:50px;width:980px;top:420px;height:700px;opacity:0;padding:40px 40px}
+#quiz .q1{font-weight:800;font-size:34px;color:var(--hl);letter-spacing:.06em;text-align:center}
+.qr{position:relative;height:112px;margin-top:8px;display:flex;align-items:center;font-weight:700;font-size:37px;line-height:1.15;padding-right:290px}
+.qr b{color:var(--hl);margin-right:16px;font-size:42px}
+.qa{position:absolute;right:0;top:22px;width:270px;height:66px;border-radius:999px;color:#fff;font-weight:800;font-size:28px;letter-spacing:.03em;display:flex;align-items:center;justify-content:center;opacity:0}
+#ring{left:900px;top:216px;width:140px;height:140px;opacity:0}
+#ring .n{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"Inter Display";font-weight:800;font-size:64px}
+#ebar{left:0;width:1080px;top:1210px;height:160px;opacity:0}
+#ebar .lb{position:absolute;left:60px;top:0;font-weight:800;font-size:34px}
+#ebar .tr{position:absolute;left:60px;top:60px;width:960px;height:50px;border-radius:25px;border:4px solid var(--cream);background:rgba(243,233,210,.12);overflow:hidden}
+#ebar .fl{position:absolute;left:0;top:0;bottom:0;width:100%;background:var(--rec);border-radius:20px}
+#ebar .nt{position:absolute;left:60px;top:122px;font-size:24px;font-weight:600;color:var(--muted)}
+#cap{left:60px;width:960px;top:1488px;height:180px;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;font-size:50px;line-height:1.22;color:#EEF3F8;text-shadow:0 3px 10px rgba(0,0,0,.45)}
+#cap .hl{color:var(--hl)}
+#outro{left:0;width:1080px;top:640px;text-align:center;opacity:0}
+#outro .o1{font-family:"Inter Display";font-weight:800;font-size:110px;line-height:1.02;letter-spacing:-.02em}
+#outro .o1 span{color:var(--hl)}
+#outro .o2{margin-top:36px;font-weight:700;font-size:38px;color:var(--muted)}
+#outro .o3{margin-top:90px;display:inline-block;background:var(--paper);color:var(--ink);font-weight:800;font-size:36px;padding:18px 34px;border-radius:999px}
+#outro .o3 b{color:#D2692A}
+</style>
+<style>
+.uc{position:absolute;width:480px;height:180px;border-radius:24px;background:rgba(9,27,52,.85);border:4px solid #3FA9E0;opacity:0;display:flex;align-items:center;gap:20px;padding:0 22px}
+.uc svg{flex:none}.uc b{display:block;font-size:31px;font-weight:800;line-height:1.15}.uc small{display:block;font-size:24px;font-weight:600;color:#9DB0C8;margin-top:4px}
+.fx{position:absolute;left:60px;width:960px;height:132px;border-radius:22px;background:rgba(9,27,52,.85);border:3px solid #2E9D84;opacity:0;display:flex;align-items:center;padding:0 26px;gap:22px}
+.fx i{flex:none;width:66px;height:66px;border-radius:50%;background:#2E9D84;color:#fff;font-style:normal;font-weight:800;font-size:36px;display:flex;align-items:center;justify-content:center}
+.fx span{font-size:34px;font-weight:800;line-height:1.2}.fx em{font-style:normal;color:#F7A04B}
+#qz{left:60px;width:960px;top:430px;height:430px;border-radius:30px;background:rgba(9,27,52,.85);border:4px solid #3FA9E0;padding:46px 50px;text-align:center;opacity:0}
+#qz .q1{font-weight:800;font-size:34px;color:#F7A04B;letter-spacing:.06em}#qz .q2{margin-top:30px;font-weight:800;font-size:50px;line-height:1.28}
+#ring2{left:430px;top:900px;width:220px;height:220px;opacity:0}#ring2 .n{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"Inter Display";font-weight:800;font-size:96px}
+#an{left:90px;width:900px;top:910px;border-radius:30px;background:#FFF7E6;color:#0B1F35;text-align:center;padding:36px 30px;opacity:0;font-weight:800;font-size:50px;line-height:1.2}#an em{font-style:normal;color:#D2692A}
+#bp{left:140px;width:800px;top:470px;height:560px;opacity:0}
+</style>
+</head>
+<body>
+<div id="frame">
+  <div id="logo" class="abs"><img src="../shared/logo-unimap.png" alt="UniMAP"></div>
+  <div id="pill" class="abs"><span>Every kWh Counts</span></div>
+  <div id="tag" class="abs"><span>MMJ46102 · Week 6 · Chapter 4 · EP 3</span></div>
+  <div id="wm" class="abs">DrFath</div>
+
+  
+  <div class="hd abs" id="h1">Where does the energy go?</div>
+  <div class="hd abs" id="h2">5 big energy users</div>
+  <div class="hd abs" id="h3">Fix it at the <span style="color:var(--hl)">design</span> stage.</div>
+  <div class="hd abs" id="h4">5 design fixes</div>
+  <div class="hd abs" id="h5">Careful!</div>
+  <div class="hd abs" id="h6">Your turn.</div>
+  <div class="pn abs" id="p1"><svg viewBox="0 0 1080 720">
+    <path d="M140 640 L140 400 L320 310 L320 400 L500 310 L500 400 L680 310 L680 640 Z" fill="#E9E0CC"/>
+    <rect x="220" y="520" width="90" height="120" fill="#5D6B7A"/><rect x="400" y="470" width="180" height="70" rx="6" fill="#3FA9E0"/>
+    <circle cx="860" cy="250" r="120" fill="#FFF7E6" stroke="#F2C14E" stroke-width="10"/>
+    <text x="860" y="215" text-anchor="middle" class="tx" font-size="28" fill="#5A3B1C">kWh</text>
+    <line id="dial" x1="860" y1="250" x2="860" y2="160" stroke="#E07B39" stroke-width="10" stroke-linecap="round"/><circle cx="860" cy="250" r="12" fill="#0B1F35"/>
+    <path id="flow" d="M760 330 C720 380 720 420 690 450" stroke="#F6D58E" stroke-width="12" stroke-dasharray="24 16" fill="none"/>
+    
+  </svg></div>
+  <div class="uc" id="u1" style="left:45px;top:450px"><svg width="96" height="96" viewBox="0 0 96 96"><rect x="8" y="26" width="58" height="44" rx="10" fill="#7D90A5"/><rect x="66" y="40" width="24" height="16" fill="#C9D3DD"/><g stroke="#5D6B7A" stroke-width="5"><line x1="22" y1="30" x2="22" y2="66"/><line x1="36" y1="30" x2="36" y2="66"/><line x1="50" y1="30" x2="50" y2="66"/></g></svg><div><b>Motors</b><small>pumps, fans, conveyors</small></div></div><div class="uc" id="u2" style="left:555px;top:450px"><svg width="96" height="96" viewBox="0 0 96 96"><rect x="14" y="20" width="40" height="64" rx="20" fill="#3FA9E0"/><path d="M54 40 H76 V30" stroke="#C9D3DD" stroke-width="8" fill="none"/><g stroke="#E9F4FB" stroke-width="5" stroke-linecap="round"><line x1="82" y1="22" x2="90" y2="12"/><line x1="76" y1="18" x2="76" y2="6"/></g></svg><div><b>Compressed air</b><small>tools, actuators, cleaning</small></div></div><div class="uc" id="u3" style="left:45px;top:660px"><svg width="96" height="96" viewBox="0 0 96 96"><path d="M48 8 C62 30 76 40 72 62 C68 82 28 82 24 62 C21 46 34 40 36 26 C42 36 44 40 48 42 C50 30 46 20 48 8Z" fill="#E07B39"/><path d="M48 44 C56 54 60 60 58 68 C56 76 40 76 38 68 C37 60 44 56 48 44Z" fill="#F6D58E"/></svg><div><b>Heating & cooling</b><small>ovens, furnaces, chillers</small></div></div><div class="uc" id="u4" style="left:555px;top:660px"><svg width="96" height="96" viewBox="0 0 96 96"><rect x="8" y="14" width="80" height="70" rx="8" fill="#E9E0CC"/><rect x="8" y="14" width="80" height="14" fill="#2E7D6B"/><rect x="16" y="34" width="46" height="42" rx="4" fill="#0B1F35"/><rect x="68" y="34" width="14" height="42" rx="3" fill="#13314F"/><circle cx="75" cy="64" r="4" fill="#4ADE80"/></svg><div><b>Machine tools</b><small>CNC, presses, moulding</small></div></div><div class="uc" id="u5" style="left:300px;top:870px"><svg width="96" height="96" viewBox="0 0 96 96"><circle cx="48" cy="40" r="26" fill="#F6D58E"/><rect x="36" y="64" width="24" height="18" rx="4" fill="#9DB0C8"/><g stroke="#F6D58E" stroke-width="5" stroke-linecap="round"><line x1="48" y1="4" x2="48" y2="10"/><line x1="14" y1="40" x2="8" y2="40"/><line x1="82" y1="40" x2="88" y2="40"/></g></svg><div><b>Lighting & building</b><small>lights, air-conditioning</small></div></div>
+  <div class="pn abs" id="bp"><svg viewBox="0 0 800 560">
+    <rect x="0" y="0" width="800" height="560" rx="24" fill="#123E6E" stroke="#7FD3F5" stroke-width="4"/>
+    <g stroke="#7FD3F5" stroke-width="1.5" opacity=".35"><line x1="40" y1="0" x2="40" y2="560"/><line x1="80" y1="0" x2="80" y2="560"/><line x1="120" y1="0" x2="120" y2="560"/><line x1="160" y1="0" x2="160" y2="560"/><line x1="200" y1="0" x2="200" y2="560"/><line x1="240" y1="0" x2="240" y2="560"/><line x1="280" y1="0" x2="280" y2="560"/><line x1="320" y1="0" x2="320" y2="560"/><line x1="360" y1="0" x2="360" y2="560"/><line x1="400" y1="0" x2="400" y2="560"/><line x1="440" y1="0" x2="440" y2="560"/><line x1="480" y1="0" x2="480" y2="560"/><line x1="520" y1="0" x2="520" y2="560"/><line x1="560" y1="0" x2="560" y2="560"/><line x1="600" y1="0" x2="600" y2="560"/><line x1="640" y1="0" x2="640" y2="560"/><line x1="680" y1="0" x2="680" y2="560"/><line x1="720" y1="0" x2="720" y2="560"/><line x1="760" y1="0" x2="760" y2="560"/><line x1="0" y1="40" x2="800" y2="40"/><line x1="0" y1="80" x2="800" y2="80"/><line x1="0" y1="120" x2="800" y2="120"/><line x1="0" y1="160" x2="800" y2="160"/><line x1="0" y1="200" x2="800" y2="200"/><line x1="0" y1="240" x2="800" y2="240"/><line x1="0" y1="280" x2="800" y2="280"/><line x1="0" y1="320" x2="800" y2="320"/><line x1="0" y1="360" x2="800" y2="360"/><line x1="0" y1="400" x2="800" y2="400"/><line x1="0" y1="440" x2="800" y2="440"/><line x1="0" y1="480" x2="800" y2="480"/><line x1="0" y1="520" x2="800" y2="520"/></g>
+    <rect x="200" y="150" width="400" height="220" rx="14" fill="none" stroke="#F3E9D2" stroke-width="6"/>
+    <circle cx="300" cy="260" r="50" fill="none" stroke="#F3E9D2" stroke-width="6"/><circle cx="500" cy="260" r="34" fill="none" stroke="#F3E9D2" stroke-width="6"/>
+    <path id="pen" d="M560 470 L700 330 L730 360 L590 500 Z" fill="#F2C14E"/>
+    <text x="400" y="440" text-anchor="middle" class="tx" font-size="40" fill="#F7A04B">DESIGN STAGE</text></svg></div>
+  <div class="fx" id="f1" style="top:450px"><i>1</i><span>Lighter parts → <em>less material to process and transport</em></span></div><div class="fx" id="f2" style="top:602px"><i>2</i><span>Fewer machining operations → <em>less machine time</em></span></div><div class="fx" id="f3" style="top:754px"><i>3</i><span>Less friction in moving parts → <em>less energy in use</em></span></div><div class="fx" id="f4" style="top:906px"><i>4</i><span>Better insulation → <em>less heating and cooling</em></span></div><div class="fx" id="f5" style="top:1058px"><i>5</i><span>Easy maintenance → <em>stays efficient for longer</em></span></div>
+  <div id="eq" class="abs" style="top:560px"><span style="background:#2E9D84">Lowest energy</span><b>≠</b><span style="background:#5DBB63">Most sustainable</span></div>
+  <div id="key" class="abs" style="top:800px"><em>KEY POINT</em> · Look at the <em>whole life cycle</em>, not just the energy of one process.</div>
+  <div id="qz" class="abs"><div class="q1">PAUSE &amp; TRY</div><div class="q2">A part needs <span style="color:var(--hl)">5</span> machining steps. You redesign it to need <span style="color:var(--hl)">3</span>.<br>Which design fix is this?</div></div>
+  <div id="ring2" class="abs"><svg width="220" height="220" viewBox="0 0 220 220"><circle cx="110" cy="110" r="94" fill="none" stroke="rgba(243,233,210,.18)" stroke-width="16"/>
+    <circle id="arc" cx="110" cy="110" r="94" fill="none" stroke="#F7A04B" stroke-width="16" stroke-linecap="round" transform="rotate(-90 110 110)" stroke-dasharray="590.6"/></svg><div class="n" id="cd">5</div></div>
+  <div id="an" class="abs">Fewer machining operations<br>→ <em>less machine time</em></div>
+  <div id="outro" class="abs"><div class="o1">Every kWh<br><span>Counts.</span></div><div class="o2">MMJ46102 · Design for Sustainability · UniMAP</div>
+    <div class="o3"><b>NEXT · EP 4</b> · kW vs kWh: The EV Story</div></div>
+  <div id="cap" class="abs"></div>
+  <svg id="grain" width="1080" height="1920"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+</div>
+<script>
+const $=s=>document.querySelector(s);
+const DUR=73;
+const H=t=>'<span class=hl>'+t+'</span>';
+const CAPS=[
+ [0.3,2.8,"A factory uses a lot of energy."],[2.8,5.2,"But where does it "+H("actually go")+"?"],
+ [5.4,8.6,"Number one: "+H("motors")+". Pumps, fans and conveyors."],[8.6,12.0,"Two: "+H("compressed air")+", for tools, actuators and cleaning."],
+ [12.0,15.6,"Three: "+H("heating and cooling")+". Ovens, furnaces, chillers."],[15.6,19.2,"Four: "+H("machine tools")+". CNC machines, presses, moulding."],
+ [19.2,22.6,"Five: "+H("lighting and the building")+", like air-conditioning."],[22.8,26.0,"So how do engineers cut this energy?"],
+ [26.0,29.6,"They start early, at the "+H("design stage")+"."],[29.8,33.4,H("Lighter parts")+": less material to process and transport."],
+ [33.4,37.0,H("Fewer machining operations")+": less machine time."],[37.0,40.6,H("Less friction")+" in moving parts: less energy in use."],
+ [40.6,44.2,H("Better insulation")+": less heating and cooling."],[44.2,47.8,H("Easy maintenance")+": the machine stays efficient for longer."],
+ [48.0,51.6,"But be careful. The lowest-energy process…"],[51.6,55.6,"is not always the most "+H("sustainable product")+". Look at the whole life cycle."],
+ [55.8,59.0,"Your turn. A part needs five machining steps. You redesign it to need three."],[59.0,61.0,"Which design fix is this? Pause now."],
+ [66.2,69.4,H("Fewer machining operations")+": less machine time."],[69.6,72.6,"Remember: "+H("every kWh counts.")],
+];
+const tl=gsap.timeline({paused:true,defaults:{ease:'power3.out',duration:.6}});
+function hd(id,a,b){tl.fromTo(id,{opacity:0,y:30},{opacity:1,y:0,immediateRender:false},a);if(b!==undefined)tl.to(id,{opacity:0,y:-24,duration:.4,ease:'power2.in'},b);}
+function pop(id,a){tl.fromTo(id,{opacity:0,y:40,scale:.9},{opacity:1,y:0,scale:1,ease:'back.out(1.8)',immediateRender:false},a);}
+function build(){
+  tl.fromTo('#logo,#pill,#tag',{opacity:0,y:-20},{opacity:1,y:0,stagger:.12,immediateRender:false},0);
+  hd('#h1',0.3,5.2);tl.fromTo('#p1',{opacity:0},{opacity:1,immediateRender:false},0.2);tl.to('#p1',{opacity:0,duration:.4},5.2);
+  hd('#h2',5.4,22.6);
+  [5.4,8.6,12.0,15.6,19.2].forEach((t,i)=>{pop('#u'+(i+1),t);
+    tl.to('#u'+(i+1),{borderColor:'#F7A04B',duration:.3},t);if(i<4)tl.to('#u'+(i+1),{borderColor:'#3FA9E0',duration:.3},[8.6,12.0,15.6,19.2][i]);});
+  tl.to('.uc',{opacity:0,y:-20,duration:.4,stagger:.05},22.6);
+  hd('#h3',22.9,29.5);pop('#bp',23.2);tl.to('#pen',{x:-120,y:60,duration:3,ease:'sine.inOut'},26.0);tl.to('#bp',{opacity:0,duration:.4},29.5);
+  hd('#h4',29.8,47.8);[29.8,33.4,37.0,40.6,44.2].forEach((t,i)=>pop('#f'+(i+1),t));tl.to('.fx',{opacity:0,duration:.4},47.8);
+  hd('#h5',48.0,55.6);tl.fromTo('#eq',{opacity:0,y:30},{opacity:1,y:0,immediateRender:false},48.2);pop('#key',51.6);tl.to('#eq,#key',{opacity:0,duration:.4},55.6);
+  hd('#h6',55.8,69.4);pop('#qz',55.9);tl.fromTo('#ring2',{opacity:0,scale:.6},{opacity:1,scale:1,ease:'back.out(2)',immediateRender:false},60.6);
+  tl.to('#ring2',{opacity:0,duration:.3},65.9);pop('#an',66.2);tl.to('#qz,#an',{opacity:0,duration:.4},69.3);
+  tl.fromTo('#outro',{opacity:0,y:40},{opacity:1,y:0,duration:.8,immediateRender:false},69.6);tl.set({},{},DUR);
+}
+const clamp=v=>Math.max(0,Math.min(1,v));
+function drawCaps(t){const c=CAPS.find(c=>t>=c[0]&&t<c[1]);const el=$('#cap');if(!c){el.innerHTML='';return;}
+  if(el.dataset.k!==String(c[0])){el.innerHTML='<div>'+c[2]+'</div>';el.dataset.k=c[0];}
+  el.style.opacity=clamp((t-c[0])/.15)*clamp((c[1]-t)/.15);el.style.transform=`translateY(${(1-clamp((t-c[0])/.2))*14}px)`;}
+function drawLive(t){$('#dial').setAttribute('transform',`rotate(${(t*160)%360} 860 250)`);$('#flow').setAttribute('stroke-dashoffset',String(-t*70));
+  const k=clamp((t-61)/5);$('#arc').setAttribute('stroke-dashoffset',String(590.6*k));$('#cd').textContent=t<61?'5':String(Math.max(1,5-Math.floor(t-61)));}
+const Wp=window.WARP||[[0,0],[DUR,DUR]],OUT=window.NEW_DUR||DUR;
+function unwarp(tn){for(let i=1;i<Wp.length;i++){const[o0,n0]=Wp[i-1],[o1,n1]=Wp[i];if(tn<=n1)return n1===n0?o0:o0+(tn-n0)*(o1-o0)/(n1-n0);}return Wp[Wp.length-1][0];}
+window.seek=tn=>{const t=unwarp(tn);tl.seek(t,false);drawLive(t);drawCaps(t);};
+window.ready=document.fonts.ready.then(()=>{build();seek(0);return OUT;});
+</script>
+</body>
+</html>

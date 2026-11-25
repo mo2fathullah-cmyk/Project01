@@ -1,0 +1,104 @@
+[
+ {
+  "id": "01",
+  "t": 0.3,
+  "end": 3.0,
+  "text": "k W, and k W h."
+ },
+ {
+  "id": "02",
+  "t": 3.0,
+  "end": 6.0,
+  "text": "They look almost the same. But they mean very different things."
+ },
+ {
+  "id": "03",
+  "t": 6.2,
+  "end": 9.4,
+  "text": "k W, is power."
+ },
+ {
+  "id": "04",
+  "t": 9.4,
+  "end": 13.0,
+  "text": "It tells you how fast energy is being used."
+ },
+ {
+  "id": "05",
+  "t": 13.0,
+  "end": 16.2,
+  "text": "Think of it as the speed."
+ },
+ {
+  "id": "06",
+  "t": 16.4,
+  "end": 19.6,
+  "text": "k W h, is energy."
+ },
+ {
+  "id": "07",
+  "t": 19.6,
+  "end": 23.4,
+  "text": "It is the total amount used, over time."
+ },
+ {
+  "id": "08",
+  "t": 23.4,
+  "end": 27.0,
+  "text": "Think of it as the energy in the battery."
+ },
+ {
+  "id": "09",
+  "t": 27.2,
+  "end": 30.6,
+  "text": "They are linked: energy equals power, times time."
+ },
+ {
+  "id": "10",
+  "t": 30.6,
+  "end": 34.4,
+  "text": "A charger gives eight kilowatts, for five hours."
+ },
+ {
+  "id": "11",
+  "t": 34.4,
+  "end": 38.4,
+  "text": "Eight times five: forty kilowatt hours goes into the battery."
+ },
+ {
+  "id": "12",
+  "t": 38.6,
+  "end": 42.0,
+  "text": "k W is a rate. k W h is an amount."
+ },
+ {
+  "id": "13",
+  "t": 42.0,
+  "end": 45.6,
+  "text": "Never mix them up in one formula."
+ },
+ {
+  "id": "14",
+  "t": 45.8,
+  "end": 49.6,
+  "text": "Your turn. A motor uses two kilowatts for three hours."
+ },
+ {
+  "id": "15",
+  "t": 49.6,
+  "end": 51.6,
+  "text": "How much energy? Pause now."
+ },
+ {
+  "id": "16",
+  "t": 56.8,
+  "end": 59.6,
+  "text": "Two times three: six kilowatt hours."
+ },
+ {
+  "id": "17",
+  "t": 59.8,
+  "end": 62.8,
+  "text": "Remember: every kilowatt hour counts."
+ }
+]
