@@ -50,7 +50,8 @@ if __name__ == '__main__':
     k = load(mdir)
     os.makedirs(out, exist_ok=True)
     for ln in json.load(open(lines_path)):
-        ph = phonemes(k, ln['text'], ln.get('lang', 'en-gb'), accent)
+        default_lang = 'en-gb' if (voice.startswith('b') or accent == 'my') else 'en-us'
+        ph = phonemes(k, ln['text'], ln.get('lang', default_lang), accent)
         audio, sr = k.create(ph, voice=voice, speed=ln.get('speed', speed), is_phonemes=True)
         sf.write(os.path.join(out, f"{ln['id']}.wav"), audio, sr)
         d = len(audio) / sr

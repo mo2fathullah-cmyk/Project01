@@ -1,6 +1,6 @@
 [
  {"id":"01","t":0.4,"end":2.8,"text":"It's ten p.m. The lab is empty."},
- {"id":"02","t":2.8,"end":5.0,"lang":"ms","text":"Tapi mesin C N C ni, masih on."},
+ {"id":"02","t":2.8,"end":5.0,"text":"But the CNC machine... is still on."},
  {"id":"03","t":5.2,"end":7.2,"text":"It's not cutting anything."},
  {"id":"04","t":7.2,"end":10.2,"text":"But the spindle, the pump and the fans are still running."},
  {"id":"05","t":10.2,"end":12.0,"text":"We call this, idle."},
@@ -12,14 +12,14 @@
  {"id":"11","t":23.0,"end":26.4,"text":"One point two, times three, times two hundred and fifty."},
  {"id":"12","t":26.4,"end":30.0,"text":"Nine hundred kilowatt hours a year."},
  {"id":"13","t":30.2,"end":34.0,"text":"At fifty sen per kilowatt hour, that's four hundred and fifty ringgit a year."},
- {"id":"14","t":34.0,"end":38.0,"lang":"ms","text":"Duit keluar, kerja tak jalan."},
+ {"id":"14","t":34.0,"end":38.0,"text":"Money goes out. No work comes in."},
  {"id":"15","t":38.2,"end":45.0,"text":"And three hundred and sixty kilograms of C O two goes into the air."},
  {"id":"16","t":45.2,"end":47.6,"text":"That's just ONE machine."},
  {"id":"17","t":47.6,"end":50.2,"text":"A factory with twenty machines? Nine thousand ringgit a year."},
- {"id":"18","t":50.2,"end":52.2,"lang":"ms","text":"Untuk mesin yang tak buat apa apa."},
+ {"id":"18","t":50.2,"end":52.2,"text":"For machines doing nothing at all."},
  {"id":"19","t":52.4,"end":55.0,"text":"Remember: idle means on, but not working."},
- {"id":"20","t":55.0,"end":56.6,"lang":"ms","text":"Itu pembaziran."},
+ {"id":"20","t":55.0,"end":56.6,"text":"That is pure waste."},
  {"id":"21","t":56.8,"end":59.6,"text":"Your turn. Pause the video, and try."},
  {"id":"22","t":64.0,"end":66.4,"text":"The answer: two, times four, times two hundred and fifty. Two thousand kilowatt hours."},
- {"id":"23","t":66.6,"end":69.7,"text":"I'm Doctor {ms:Fathullah}. Every kilowatt hour counts."}
+ {"id":"23","t":66.6,"end":69.7,"text":"Remember: every kilowatt hour counts."}
 ]

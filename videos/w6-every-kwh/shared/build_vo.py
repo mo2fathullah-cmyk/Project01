@@ -1,5 +1,6 @@
 # Place voice clips on a timeline and time-warp the animation so every line fits.
-# Usage: python3 build_vo.py <lines.json> <clip_dir> <old_duration> <out_timing.js> <out_voice.wav>
+# Usage: python3 build_vo.py <lines.json> <clip_dir> <old_duration> <out_timing.js> <out_voice.wav> [cues_base.json out_cues.json]
+# The optional cue files map music cues (drop, break, riser...) from the base timeline to the voiced timeline.
 # Each caption segment [start_i, start_{i+1}) keeps its original length unless the voice needs more,
 # in which case it is stretched to voice + 0.35 s. The page maps new time -> old time with WARP.
 import json, sys
@@ -40,3 +41,16 @@ with open(out_js, 'w') as f:
     f.write(f'window.NEW_DUR={new_dur:.3f};\n')
 print('old', old_dur, 'new', round(new_dur, 2))
 for o, n in anchors: print(f'{o:6.2f} -> {n:6.2f}')
+
+if len(sys.argv) > 7:
+    def warp(o):
+        for (o0, n0), (o1, n1) in zip(anchors, anchors[1:]):
+            if o <= o1:
+                return n0 if o1 == o0 else n0 + (o - o0) * (n1 - n0) / (o1 - o0)
+        return anchors[-1][1]
+    cb = json.load(open(sys.argv[6]))
+    cues = {k: ([round(warp(x), 3) for x in v] if isinstance(v, list) else round(warp(v), 3))
+            for k, v in cb.items() if k != 'base'}
+    cues['duration'] = round(new_dur, 3)
+    json.dump(cues, open(sys.argv[7], 'w'))
+    print('cues', cues)
