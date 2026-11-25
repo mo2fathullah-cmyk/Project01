@@ -3,3 +3,4 @@
 *.mp4.parts/
 __pycache__/
 *.m4a
+videos/**/audio/cues.json
