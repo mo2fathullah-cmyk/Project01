@@ -1,3 +1,5 @@
 *.mp4
 *.wav
 *.mp4.parts/
+__pycache__/
+*.m4a
