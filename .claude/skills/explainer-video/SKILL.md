@@ -50,6 +50,19 @@ current series without asking for approval. In that mode:
   then SendUserFile the MP4s and end with a short Malay summary listing the files to download.
 - Stop after 2 episodes. If the series is finished, say so and make nothing.
 
+## Orbit reveal (3D camera move) - one scene per 3 episodes
+
+The user wants ONE orbit-reveal scene in every third episode (EP6, EP9, EP12, ...), only on the
+most important scene (a machine or system the episode is about). Not more - it costs render time and tokens.
+- Load `../shared/three.min.js` (r149) and `../shared/orbit.js` (scaffolded by `new_episode.sh`).
+  Put a `<div id="orbit">` (e.g. left 0, top 400, 1080x760) in the stage, fade it in/out with GSAP like a panel.
+- `Orbit.mount('#orbit', {t0, t1, from, to, target, focusFrom, build})` and call `Orbit.render(t)` inside
+  `window.seek` (base time). See `templates/orbit-example.html` (flat CNC from boxes/cylinders, 3 pill labels).
+- Camera recipe: start close on one detail (`focusFrom`, r ≈ 2.5, outside the body), pull back to r ≈ 13-15 while
+  orbiting 270 deg, and END on a 3/4 front view (to.theta ≈ 30, phi ≈ 24) so labels do not overlap.
+  Move lasts 5-7 s; narration names the parts as the camera passes them.
+- `render.js` already launches Chromium with SwiftShader WebGL flags; 3D frames render slower (fine).
+
 ## Workflow
 
 1. **Read the source.** For a PPTX use the pptx skill's `slide_text.py` (includes speaker

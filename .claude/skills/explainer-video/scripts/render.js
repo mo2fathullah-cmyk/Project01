@@ -22,7 +22,7 @@ async function openPage(browser, scale) {
 }
 
 async function segment(idx, f0, f1, file) {
-  const browser = await chromium.launch();
+  const browser = await chromium.launch({args: ['--enable-unsafe-swiftshader', '--use-angle=swiftshader', '--ignore-gpu-blocklist']});
   const {p} = await openPage(browser, 2);
   const ff = spawn('ffmpeg', ['-loglevel', 'error', '-y', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-',
     '-vf', 'scale=1080:1920:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-crf', '16', '-tune', 'animation',
@@ -43,7 +43,7 @@ async function segment(idx, f0, f1, file) {
 (async () => {
   if (mode === 'stills') {
     fs.mkdirSync(out, {recursive: true});
-    const browser = await chromium.launch();
+    const browser = await chromium.launch({args: ['--enable-unsafe-swiftshader', '--use-angle=swiftshader', '--ignore-gpu-blocklist']});
     const {p} = await openPage(browser, 1);
     for (const t of arg4.split(',').map(Number)) {
       await p.evaluate(() => seek(0));
@@ -55,7 +55,7 @@ async function segment(idx, f0, f1, file) {
   }
   const workers = Number(arg4 || 4);
   const audio = arg5;
-  const b = await chromium.launch();
+  const b = await chromium.launch({args: ['--enable-unsafe-swiftshader', '--use-angle=swiftshader', '--ignore-gpu-blocklist']});
   const {dur} = await openPage(b, 1);
   await b.close();
   const total = Math.round(dur * FPS);

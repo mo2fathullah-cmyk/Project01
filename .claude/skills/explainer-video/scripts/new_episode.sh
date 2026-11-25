@@ -7,7 +7,7 @@ SK=$(cd "$(dirname "$0")/.." && pwd)
 SER=$1; EP=$2
 mkdir -p "$SER/shared" "$SER/$EP/audio"
 for f in render.js tts.py build_vo.py music.py produce.sh; do cp -n "$SK/scripts/$f" "$SER/shared/"; done
-for f in gsap.min.js logo-unimap.png; do cp -n "$SK/assets/$f" "$SER/shared/"; done
+for f in gsap.min.js logo-unimap.png three.min.js orbit.js; do cp -n "$SK/assets/$f" "$SER/shared/"; done
 chmod +x "$SER/shared/produce.sh"
 cp -n "$SK/templates/episode.html" "$SER/$EP/index.html"
 cp -n "$SK/templates/lines.json" "$SER/$EP/audio/lines.json"
