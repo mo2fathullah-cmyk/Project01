@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # One command to voice, score, mix and render an episode.
 #   shared/produce.sh <episode_dir> <voice> [accent: none|my] [output_suffix]
+# Optional env: SPEED=0.92 (calmer narration)
 # Voices (Kokoro): female  af_heart (young, warm) | af_bella | bf_emma (British)
 #                  male    am_michael | am_fenrir | bm_lewis (British)
 # Needs <episode_dir>/audio/lines.json and audio/cues_base.json ({"base": <seconds>, "lift", "break", "riser", "drop"}).
@@ -16,7 +17,7 @@ if [ ! -f "$KDIR/kokoro-v1.0.onnx" ]; then
 fi
 CLIPS=$(mktemp -d)
 BASE=$(python3 -c "import json;print(json.load(open('$EP/audio/cues_base.json'))['base'])")
-python3 "$HERE/tts.py" "$EP/audio/lines.json" "$CLIPS" "$KDIR" "$VOICE" 1.0 "$ACCENT" 2>&1 | grep -v -i warn
+python3 "$HERE/tts.py" "$EP/audio/lines.json" "$CLIPS" "$KDIR" "$VOICE" "${SPEED:-1.0}" "$ACCENT" 2>&1 | grep -v -i warn
 python3 "$HERE/build_vo.py" "$EP/audio/lines.json" "$CLIPS" "$BASE" "$EP/timing.js" "$EP/audio/voice.wav" \
   "$EP/audio/cues_base.json" "$EP/audio/cues.json" | tail -1
 DUR=$(python3 -c "import json;print(json.load(open('$EP/audio/cues.json'))['duration'])")
