@@ -1,0 +1,146 @@
+[
+ {
+  "id": "01",
+  "t": 0.3,
+  "end": 3.4,
+  "text": "Your conveyor motor runs eight hours a day."
+ },
+ {
+  "id": "02",
+  "t": 3.4,
+  "end": 7.0,
+  "text": "What if a better motor did the same job, with less electricity?"
+ },
+ {
+  "id": "03",
+  "t": 7.2,
+  "end": 10.6,
+  "text": "Here's what we know. Output: seven point five kilowatts. Eight hours a day."
+ },
+ {
+  "id": "04",
+  "t": 10.6,
+  "end": 14.0,
+  "text": "Old motor: seventy five percent efficient. New motor: ninety percent."
+ },
+ {
+  "id": "05",
+  "t": 14.2,
+  "end": 17.4,
+  "text": "The trick: the output stays the same."
+ },
+ {
+  "id": "06",
+  "t": 17.4,
+  "end": 20.6,
+  "text": "So input equals output, divided by efficiency."
+ },
+ {
+  "id": "07",
+  "t": 20.8,
+  "end": 24.8,
+  "text": "Old motor: seven point five, divided by zero point seven five: ten kilowatts in."
+ },
+ {
+  "id": "08",
+  "t": 24.8,
+  "end": 28.8,
+  "text": "New motor: seven point five, divided by zero point nine: eight point three three kilowatts in."
+ },
+ {
+  "id": "09",
+  "t": 29.0,
+  "end": 32.6,
+  "text": "Now, times eight hours."
+ },
+ {
+  "id": "10",
+  "t": 32.6,
+  "end": 36.2,
+  "text": "Old: eighty kilowatt hours a day. New: sixty six point seven."
+ },
+ {
+  "id": "11",
+  "t": 36.2,
+  "end": 40.0,
+  "text": "You save thirteen point three kilowatt hours, every single day."
+ },
+ {
+  "id": "12",
+  "t": 40.2,
+  "end": 44.0,
+  "text": "Over two hundred and fifty days, that's about three thousand, three hundred and thirty three kilowatt hours."
+ },
+ {
+  "id": "13",
+  "t": 44.0,
+  "end": 48.0,
+  "text": "About one thousand, six hundred and sixty seven ringgit a year, from one motor."
+ },
+ {
+  "id": "14",
+  "t": 48.2,
+  "end": 51.6,
+  "text": "So, four smart moves for motors."
+ },
+ {
+  "id": "15",
+  "t": 51.6,
+  "end": 54.2,
+  "text": "Upgrade, to I E three or I E four."
+ },
+ {
+  "id": "16",
+  "t": 54.2,
+  "end": 57.6,
+  "text": "Right size: match the real load."
+ },
+ {
+  "id": "17",
+  "t": 57.6,
+  "end": 61.0,
+  "text": "Maintain: bearings, lubrication, alignment."
+ },
+ {
+  "id": "18",
+  "t": 61.0,
+  "end": 64.0,
+  "text": "And switch off when not needed."
+ },
+ {
+  "id": "19",
+  "t": 64.2,
+  "end": 67.6,
+  "text": "But remember:"
+ },
+ {
+  "id": "20",
+  "t": 67.6,
+  "end": 71.6,
+  "text": "a new motor cannot fix a bad system, like an oversized pump."
+ },
+ {
+  "id": "21",
+  "t": 71.8,
+  "end": 76.4,
+  "text": "Your turn. Five kilowatts output, ten hours a day. Efficiency goes from seventy, to eighty eight percent."
+ },
+ {
+  "id": "22",
+  "t": 76.4,
+  "end": 78.6,
+  "text": "Energy saved per day? Pause now."
+ },
+ {
+  "id": "23",
+  "t": 86.8,
+  "end": 91.0,
+  "text": "Old: seventy one point four. New: fifty six point eight. You save fourteen point six kilowatt hours a day."
+ },
+ {
+  "id": "24",
+  "t": 91.2,
+  "end": 94.2,
+  "text": "Remember: every kilowatt hour counts."
+ }
+]

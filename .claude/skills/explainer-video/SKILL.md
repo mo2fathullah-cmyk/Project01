@@ -37,6 +37,19 @@ sentences); he does not read code, so describe results in plain words and send t
   Deliver every finished MP4 with SendUserFile (he cannot find files in the repo; MP4s are
   git-ignored except `final/`). Commit sources and push after each step.
 
+## Scheduled daily mode (weekday mornings)
+
+A scheduled task starts a fresh session each weekday morning to make the next 2 episodes of the
+current series without asking for approval. In that mode:
+- Setup: `pip install -q kokoro-onnx soundfile scipy numpy` (Kokoro models download on first produce).
+- Work out what is next from `references/w6-series-plan.md` (status column) and `<series>/final/`.
+  If an episode folder already has a built `index.html` (e.g. ep06), check stills and produce it.
+- Write the script yourself following the approved fixed flow - no approval step.
+- Voice for the Week 6 series from EP2 on: British male narrator `bm_george` with `SPEED=0.92`.
+- Commit + push each finished episode (MP4 into `final/`), update the plan's status lines,
+  then SendUserFile the MP4s and end with a short Malay summary listing the files to download.
+- Stop after 2 episodes. If the series is finished, say so and make nothing.
+
 ## Workflow
 
 1. **Read the source.** For a PPTX use the pptx skill's `slide_text.py` (includes speaker
