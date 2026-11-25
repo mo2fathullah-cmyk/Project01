@@ -1,7 +1,8 @@
 # Generate voice-over clips with Kokoro (offline).
 # Usage: python3 tts.py <lines.json> <outdir> <model_dir> [voice] [speed] [accent: my|none]
 # lines.json: [{"id":..,"t":start_seconds,"end":caption_end,"lang":"en-gb"|"ms","text":..} ...]
-# Text may contain {ms:...} spans: those words are phonemised as Malay inside an English sentence (e.g. names).
+# Text may contain {ms:...} spans (phonemised as Malay) or {ph:...} spans (raw Kokoro phonemes).
+# Words in LEXICON below are always replaced with their fixed pronunciation.
 #
 # accent "my" = Malaysian English: English is phonemised (en-gb) and then reshaped with common
 # Malay-English features, so one Malay speaker voices both the English and the BM lines.
@@ -20,6 +21,17 @@ MY_RULES = [
     ('ː', ''), ('ˌ', ''),                                              # no vowel length, flatter (syllable-timed) stress
 ]
 
+# Pronunciation lexicon: words the TTS gets wrong, as Kokoro phonemes (checked by the user by ear).
+# "ringgit" is ring-GIT with a hard g, never "ring-jit".
+LEXICON = {
+    'ringgit': 'ɹˈɪŋɡɪt',
+}
+
+def apply_lexicon(text):
+    for w, ph in LEXICON.items():
+        text = re.sub(r'\b' + re.escape(w) + r'\b', '{ph:' + ph + '}', text, flags=re.I)
+    return text
+
 def malaysian(ph):
     for a, b in MY_RULES:
         ph = ph.replace(a, b)
@@ -27,10 +39,12 @@ def malaysian(ph):
 
 def phonemes(k, text, lang='en-gb', accent='my'):
     ph = ''
-    for p in re.split(r'(\{ms:[^}]*\})', text):
+    for p in re.split(r'(\{(?:ms|ph):[^}]*\})', apply_lexicon(text)):
         if not p:
             continue
-        if p.startswith('{ms:'):
+        if p.startswith('{ph:'):
+            ph += ' ' + p[4:-1] + ' '
+        elif p.startswith('{ms:'):
             ph += ' ' + k.tokenizer.phonemize(p[4:-1], 'ms') + ' '
         elif lang == 'ms':
             ph += k.tokenizer.phonemize(p, 'ms')
