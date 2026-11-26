@@ -1,7 +1,7 @@
 # Approved plan: MMJ46102 Week 6, Chapter 4 (31 slides) → 19 episodes, ~21 min
 A Basics: 0 Welcome/outcomes (s1-2) · 1 A Sleeping Machine Still Eats Money (s3) ✅ · 2 Five Energy Words People Mix Up (s4-6) ✅
 · 3 Where Does Factory Energy Go? (s7) ✅ · 4 kW vs kWh: The EV Story (s9) ✅ · 5 Four Formulas (s8) ✅
-B Technologies: 6 Swap the Motor (s10-11) 🟡 page built in ep06, not rendered yet · 7 VSD: The Power of Three (s12-14) · 8 Three Modes of a CNC (s15)
+B Technologies: 6 Swap the Motor (s10-11) ✅ (made 26 Nov by the scheduled run; MP4 delivered in that session, not in git) · 7 VSD: The Power of Three (s12-14) ✅ (same as EP6) · 8 Three Modes of a CNC (s15)
 · 9 CNC Maths 1: Find the Power (s16) · 10 CNC Maths 2: kW to RM and CO2 (s17) · 11 Right Process, Reuse Lost Heat (s18)
 · 12 Air Is Expensive (s19, s22) · 13 Robots Cut Three Wastes (s20)
 C Resources/practice: 14 Six Strategies (s21) · 15 Practice A (s23-25) · 16 Practice B (s26-28)
